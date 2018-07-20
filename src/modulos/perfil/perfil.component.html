@@ -1,0 +1,43 @@
+<div flex fxLayout="column" class="telaPerfil">
+  <div class="caixaLogin estiloCentroVertical" fxLayout="column">
+    <div style="    text-align: center;">
+      <i class="fa fa-user icoLogin" aria-hidden="true"></i>
+
+      <div class="caixaCampos" style="    padding-bottom: 17px;border-bottom: 1px solid #ffffff99;margin-bottom: 10px;">
+        <button (click)="criarConta()" class="botaoLogin">Criar uma conta</button>
+      </div>
+      <div class="textoOu">ou</div>
+      <div fxLayout="row" class="caixaCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 0;">
+          <i class="fa fa-user icoSearch" aria-hidden="true"></i>
+        </div>
+        <input [(ngModel)]="textoPesquisa" class="campoPesquisa" placeholder="Informe o e-mail">
+      </div>
+      <div fxLayout="row" class="caixaCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 0;">
+          <i class="fa fa-key icoSearch" aria-hidden="true"></i>
+        </div>
+        <input [(ngModel)]="textoPesquisa" class="campoPesquisa" placeholder="Informe a senha">
+      </div>
+      <div class="caixaCampos" style="    margin-bottom: 10px;">
+        <button (click)="entrarLogin()" class="botaoLogin">Entrar</button>
+      </div>
+      <div class="caixaCampos">
+        <button (click)="facebookLogin()" class="botaoLogin" style="margin-right: 0px;    background-color: #3b5998;    margin-top: 0px;">
+          <i class="fa fa-facebook icoFacebook" aria-hidden="true"></i>
+          Entrar com o Facebook</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div [hidden]="!mostraCarregando" class="telaCarregando">
+  <div class="icoCarregando">
+    <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
+  </div>
+</div>
+
+<criar-usuario class="telaCriarUsuario" [hidden]="!mostraCriarUsuario" #telaCriarUsuario (onContaCriada)="onContaCriada($event)"
+  (onFechar)="onFecharCriarConta()"></criar-usuario>
+
+<dados-usuario (onFechar)="mostrarLogin()" class="telaDadosUsuario" [hidden]="!mostraDadosUsuario" #telaDadosUsuario></dados-usuario>

@@ -1,0 +1,342 @@
+detalhes-pacote, procura-local, seleciona-data, seleciona-pessoas{
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    background-color: var(--main-color);
+    height: 100vh;
+    z-index: 99999;
+}
+
+seleciona-data, detalhes-pacote, procura-local{
+    height: 100vh;
+    z-index: 99999999999;
+    top:0px;
+}
+
+detalhes-pacote{
+    height: 100vh;
+    z-index: 9999999;
+    background-color: #FFFFFF;
+}
+
+
+.telaCarregando{
+    background-color: var(--main-color);
+    position: absolute;
+    top: 0;
+    height: calc(100vh - 70px);
+    width: 100%;
+}
+
+.icoCarregando{
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    position: relative;
+    width: 61px;
+    font-size: 62px;
+    color: #FFFFFF;    
+}
+
+.headerPacotes{
+    background-color: var(--main-color);
+    padding: 10px;
+    display: block !important;
+    padding-top: 0;
+    height: 49px;
+}
+
+.bloqueioPessoas{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #333333bf;
+    top: 0;
+}
+
+seleciona-pessoas{
+    margin-left: 0px;
+    top: 175px;
+    background-color: var(--second-color);
+    height: calc(100vh - 175px);
+    z-index: 9999999999;
+}
+
+.headerHotel{
+    background-color: var(--main-color);
+    height: 45px;
+}
+
+.botaoVoltarHotel{
+    top: 6px;
+    z-index: 1;
+    opacity: 1;
+    left: 3px;
+    margin-left: 0px;
+    z-index: 0;
+    left: 5px;
+    color: #FFFFFF;
+    background-color: #ffffff00;
+    border: 0px;
+    font-size: 20px;
+    width: 30px;
+    opacity: 0 ;
+    margin-left: 10px;    
+    z-index: 9999;
+}
+
+th{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.qtd{
+    font-weight: 900;
+    padding-right: 5px;
+}
+
+.qtdQuartos{
+    font-weight: 600;
+    font-size: 15px;
+    padding: 5px;   
+    padding-top: 8px;
+    color: var(--main-color);
+}
+
+.itemSelecao {
+    min-height: auto;
+    margin: 5px;
+    border-radius: 5px;
+    border: 0px;
+    box-shadow: 1px 1px 4px 0px #9e9e9e;
+    background-color: #FFFFFF;
+    padding: 0;
+    overflow: hidden;
+    min-height: 160px;
+    max-height: initial;
+}
+
+.telaFiltro{
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    background-color: var(--main-color);
+    height: 100vh;
+    z-index: 9999999999;
+}
+
+.telaMapa{
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    background-color: var(--main-color);
+    height: 100vh;
+    z-index: 99999;
+}
+
+procura-local{
+    height: 100vh;
+    top:0px;
+    z-index: 9999999999;
+}
+
+.telaCarregando{
+    background-color: var(--main-color);
+    position: absolute;
+    top: 0;
+    height: calc(100vh - 70px);
+    width: 100%;
+    z-index: 99999999;
+}
+
+
+.icoFiltroAplicado{
+    background-color: #5f9e74;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.icoCarregando{
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    position: relative;
+    width: 61px;
+    font-size: 62px;
+    color: #FFFFFF;    
+}
+
+.textoSelecionado{
+    text-align: center;
+    font-size: 12px;
+    color: #FFFFFF;
+    font-weight: 600;
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: pre;
+    overflow: hidden;
+    padding-left: 34px;
+    padding-right: 34px;
+    padding-top: 13px;
+}
+
+filtro-pacote{
+    margin-left: 0px;
+    top: 0px;
+    background-color: var(--main-color);
+    height: calc(100vh - 69px);
+    z-index: 0;
+    position: absolute;
+    width: 100vw;
+    z-index: 99999999;
+}
+
+.campoHospedes {
+    max-width: 111px;
+    padding-left: 22px;
+}
+
+.campoData {
+    padding-left: 26px;
+}
+
+.campoBotao{
+    height: 35px;
+    background-color:  var(--cor-campo);
+    border: 0px;
+    border-radius: 3px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: pre;
+    overflow: hidden;
+}
+
+.listaSelecao{
+    display: flex;
+    overflow-x: hidden;
+    padding-top: 5px;
+    padding-bottom: 5px;    
+    padding-left: 5px;
+    padding-right: 5px;    
+}
+
+.icoFiltro{
+    font-size: 17px;
+    padding-right: 8px;
+    margin-top: -2px;
+
+}
+
+.botaoFiltro{
+    background-color: #ffffff00;
+    border: 0px;
+    color: #FFFFFF;
+    justify-content: center;
+    outline: none;
+}
+
+.caixaFiltro{
+    position: absolute;
+    z-index: 0;
+    background: var(--main-color);
+    width: 227px;
+    margin-left: calc(50% - 113px);
+    bottom: 82px;
+    height: 50px;
+    border-radius: 30px;
+    color: #FFFFFF;
+    box-shadow: 0px 1px 1px 1px #33333329;
+}
+
+.botaoPesquisar{
+    background-color: var(--second-color);
+    border: 0;
+    height: 35px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 5px;
+    border-radius: 3px;
+}
+
+.localFoto{
+    height: 150px;
+    min-width: 155px;
+    width: 155px;
+    min-height: 150px;
+}
+
+
+.botaoPesquisarPeq{
+    margin-top: 0px;
+    margin-left: -40px;
+    width: 40px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.localCampos{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.icoSearch{
+    margin-left: 10px;
+    margin-top: 9px;
+    color: var(--main-color);
+}
+
+.telaPacotes{
+    height: calc(100vh - 115px);
+    overflow-y: auto;
+    display: block !important;
+}
+
+
+.aPartir{
+    color: #969494;
+    font-size: 11px;
+}
+
+.valorPacote{
+    font-weight: 700;
+    font-size: 24px;
+    justify-content: flex-end;
+    margin-top: -4px;
+}
+
+.labelCancelamento{
+    color: #1c670a;
+    font-weight: 600;
+    font-size: 10px;
+    padding-top: 5px;
+}
+
+.lbQtd{
+    font-size: 15px;
+    font-weight: 600;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.labelLocal{
+    font-weight: 600;
+}
+
+.icoQtd{
+    padding-top: 4px;
+}
+
+.lbTextoQtd{
+    font-size: 12px;
+    padding-top: 2px;
+    padding-right: 5px;
+}
+
+.labelReal{
+    font-size: 14px;
+    padding-top: 10px;
+    padding-right: 2px;
+}

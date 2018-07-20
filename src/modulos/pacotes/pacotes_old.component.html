@@ -1,0 +1,45 @@
+<div class="telaPacotes" flex fxLayout="row" (scroll)="onScroll($event)">
+  <div class="headerPacotes" fxLayout="column">
+    <div class="labelHeader">Pacotes</div>
+    <div fxLayout="column">
+      <div fxLayout="row" class="localCampos">
+        <button fxFlex="0" class="campoBotao campoPesquisa" (click)="selecionarLocal()" style="padding-right: 43px;text-align:left;padding-left: 10px;">{{textoPesquisa}}</button>
+        <div style="width:0px;">
+          <button class="botaoPesquisar botaoPesquisarPeq" (click)="selecionarLocal()">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="column" class="listaSelecao">
+      <button class="itemSelecao" *ngFor="let item of items" (click)="itemSelecionado(item)">
+        <item-pacote [dados]="item"></item-pacote>
+      </button>
+    </div>  
+</div>
+
+<div class="caixaFiltro" fxLayout="row" [hidden]="!mostraFiltro">
+  <button class="botaoFiltro" fxLayout="row" style="flex: 1;border-right: 1px solid #ffffff29;" (click)="mostarSaidaClick()">
+      <i class="fa fa-plane icoFiltro" aria-hidden="true"></i>
+      <div style="    font-weight: 600;font-size: 11px;">Saindo de</div>    
+      <div [hidden]="filtroSaidaAplicado != true" class="icoFiltroAplicado"></div>
+  </button>
+  <button class="botaoFiltro"  fxLayout="row" style="flex: 1" (click)="mostarFiltroClick()">
+      <i class="fa fa-filter icoFiltro" aria-hidden="true"></i>
+    <div style="    font-weight: 600;font-size: 11px;">Filtros</div>    
+    <div [hidden]="filtroFiltroAplicado != true" class="icoFiltroAplicado"></div>
+  </button>
+</div>
+
+<div [hidden]="!mostraCarregando" class="telaCarregando">
+  <div class="icoCarregando">
+      <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
+  </div>
+</div>
+
+<detalhes-pacote class="detalhes" [pacote]="pacoteSelecionado" [hidden]="!mostraDetalhesPacote" (onFechar)="onFecharDetalhes()"></detalhes-pacote>
+<procura-local class="procuraLocal"  (localSelecionado)="localSelecionado($event)" [hidden]="!mostraProcuraLocal" (onFechar)="onFecharProcuraLocal()"></procura-local>
+<tela-filtros  modoHotel="false" class="telaFiltro" [hidden]="!mostraTelaFiltro" #telaFiltroComp (onFechar)="onFecharFiltro()" (onFiltroAplicado)="onFiltroFiltroAplicado($event)"></tela-filtros>
+<tela-saida class="telaSaida" [hidden]="!mostraTelaSaida" #telaSaidaComp (onFiltroAplicado)="onFiltroAplicado($event)" (onFechar)="onFecharSaida()"></tela-saida>

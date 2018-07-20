@@ -1,0 +1,182 @@
+.botaoInferior{
+    flex: 1;
+    height: 70px;
+    text-align: center;
+}
+
+.localTelaFiltro{
+    margin-top: 0px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.caixaFiltro{
+    height: 40px;
+    background-color: #ffffff00;
+    border-bottom: 1px solid #ffffff;
+    margin-bottom: 5px;
+    color: #FFFFFF;
+}
+
+.labelFiltro{
+    flex: 1;
+    padding-top: 6px;
+}
+
+.icoSeta{
+    margin-right: 5px;
+    margin-top: 7px;
+}
+
+.itemFiltro{
+    height: 35px;
+    margin-right: 0px;
+}
+
+.labelItemFiltro{
+    flex: 1;
+    color: #ffffff9c;
+    font-size: 13px;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+.botaoAbrir{
+    border: 0px;
+    background-color: #ffffff00;
+    color: #FFFFFF;
+    font-size: 17px;
+    outline: none;
+}
+
+.localOpcoes{
+    overflow: hidden;
+}
+
+.tamTelaFiltro{
+    height: calc(100vh - 110px);
+    background-color: var(--main-color);
+    overflow: auto;
+    margin-top: 40px;
+}
+
+.labelSelecionado{
+    font-size: 11px;
+    margin-right: 10px;
+    padding-top: 5px;
+}
+
+.botaoVoltarTela{
+    top: 6px;
+    z-index: 1;
+    opacity: 1;
+    left: 3px;
+    margin-left: 0px;
+    z-index: 0;
+    position: absolute;
+    top: -35px;
+    left: 5px;
+    color: #FFFFFF;
+    background-color: #ffffff00;
+    border: 0px;
+    font-size: 20px;
+    width: 30px;
+    opacity: 0 ;
+    margin-left: 10px;    
+    z-index: 9999;
+}
+
+.botaoPesquisar{
+    background-color: var(--second-color);
+    border: 0;
+    height: 70px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 5px;
+    border-radius: 0;
+}
+
+.botaoLimpar{
+    top: 15px !important;
+    opacity: 1;
+    margin-left: 0px;
+    right: 35px;
+    left: auto;
+    font-size: 11px;
+}
+
+.opaco{
+    opacity: 0.4;
+}
+
+.semOpaco{
+    opacity: 1;
+}
+
+.labelQtdPacotes{
+    max-width: 27px;
+    text-align: right;
+    padding-right: 11px;
+    padding-top: 7px;
+}
+
+
+.localBotaoAplicar{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100vw;
+    padding: 0;
+}
+
+
+.aPartir{
+    color: #969494;
+    font-size: 11px;
+}
+
+.valorPacote{
+    font-weight: 700;
+    font-size: 24px;
+    justify-content: flex-end;
+    margin-top: -4px;
+}
+
+.labelCancelamento{
+    color: #1c670a;
+    font-weight: 600;
+    font-size: 10px;
+    padding-top: 5px;
+}
+
+.lbQtd{
+    font-size: 15px;
+    font-weight: 600;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.labelLocal{
+    font-weight: 600;
+}
+
+.icoQtd{
+    padding-top: 4px;
+}
+
+.lbTextoQtd{
+    font-size: 12px;
+    padding-top: 2px;
+    padding-right: 5px;
+}
+
+.labelReal{
+    font-size: 14px;
+    padding-top: 10px;
+    padding-right: 2px;
+}
+
+.localFoto{
+    height: 200px;
+    overflow: hidden;
+}

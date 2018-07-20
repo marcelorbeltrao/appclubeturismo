@@ -1,0 +1,54 @@
+<div [hidden]="!mostraCarregando" class="telaCarregando">
+  <div class="icoCarregando">
+    <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
+  </div>
+</div>
+
+<div flex fxLayout="column" class="caixaTela">
+  <button (click)="voltarTela()" class="botaoVoltar">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+  </button>
+  <div class="labelHeader" style="margin-left: 11px;">Selecione um quarto</div>
+  <div style="margin-left: 10px;margin-right: 10px;"> 
+    <label class="qtdQuartos">
+      Temos
+      <tbody>
+        <tr fxLayout="row">
+          <th class="qtd">{{quartos.length}}</th>
+        </tr>
+      </tbody>
+      opções de quartos para você
+    </label>
+  </div>
+  <div fxLayout="column" style="padding: 10px;">
+    <div fxLayout="column" class="itemQuarto" *ngFor="let item of quartos; let i = index">
+      <div fxLayout="column">
+        <div fxLayout="row">
+          <div style="width: 40px;">
+            <i class="fa fa-bed icoSearch " aria-hidden="true"></i>
+            <div class="indiceQto">{{i + 1}}</div>
+          </div>
+
+          <div class="labelQuarto">
+            <div class="labelNomeQuarto">{{item.name}}</div>
+            <div>{{item.fares.items[0].mealPlan.name}}</div>
+          </div>
+        </div>
+        <div fxLayout="row" class="localValores">
+          <div class="camposValor ">
+            <div class="labelTituloValor">Diária</div>
+            <div fxLayout="row" class="labelValor"><div class="labelReal">R$</div>{{item.fares.items[0].averageDaily.base.amount | number:'.2-2'}}</div>
+          </div>
+          <div class="camposValor " style="text-align: right;">
+            <div class="labelTituloValor">Total x {{hotel.qtdDiarias}}</div>
+            <div fxLayout="row" class="labelValor" style="justify-content: flex-end;"><div class="labelReal">R$</div>{{item.fares.items[0].total.base.amount  | number:'.2-2'}}</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center;">
+        <button class="botaoPesquisar" (click)="itemSelecionado(item)">Escolher quarto</button>
+      </div>
+    </div>
+  </div>
+
+</div>

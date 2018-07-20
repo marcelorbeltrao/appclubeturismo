@@ -1,0 +1,30 @@
+<div flex fxLayout="column" class="telaDetalhes">
+  <button (click)="voltarTela()" class="botaoVoltarTela ">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+  </button>
+  
+  <button [hidden]="qtdSelec == 0" (click)="desmarcaSelecao()" class="botaoVoltarTela botaoLimpar" style="top: 10px;">
+    <div>LIMPAR</div>
+  </button>
+
+  <div class="headerSeleciona" fxLayout="column">
+      <div class="labelHeader">Selecione as cidades de origem</div>
+  </div>
+
+  <div class="refeicoesAberto localOpcoes" >
+      <div class="itemFiltro" *ngFor="let item of listaCidades" fxLayout="row">
+        <div class="labelItemFiltro">{{item.cidade}}</div>
+        <div class="labelItemFiltro labelQtdPacotes">{{item.pacotes.length}}</div>
+        <div style="margin-top: 5px;">
+            <input class="magic-checkbox" type="checkbox" [id]="item.id" (change)="itemSaidaClicado(item)"  [value]="item.cidade" [(ngModel)]="item.selecionado">
+            <label [for]="item.id"></label>
+        </div>
+      </div>
+    </div>  
+</div>
+
+<div class="localBotaoAplicar">
+    <button fxFlex="0" class="botaoPesquisar" (click)="aplicarFiltro($event)" [disabled]="qtdSelec == 0">
+      Aplicar com {{qtdSelec}} de {{qtdPacotes}}
+    </button>
+  </div>

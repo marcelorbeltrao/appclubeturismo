@@ -1,0 +1,152 @@
+.botaoInferior{
+    flex: 1;
+    height: 70px;
+    text-align: center;
+}
+
+.campoPesquisa{
+    flex: 1;
+    padding-left: 10px !important;
+    padding-right: 50px !important;   
+}
+
+.icoSearch{
+    margin-left: 10px;
+    margin-top: 9px;
+    color: var(--main-color);
+}
+
+.telaCarregando{
+    background-color: var(--main-color);
+    position: absolute;
+    top: 0;
+    height: calc(100vh);
+    width: 100%;
+}
+
+
+.icoCarregando{
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    position: relative;
+    width: 61px;
+    font-size: 62px;
+    color: #FFFFFF;    
+}
+
+.localPesquisa{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.textoResult{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
+    text-align: center;
+    margin-top: 17px;
+    color: #FFFFFF;
+}
+
+.botaoVoltar{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px !important;
+}
+
+.caixaTela{
+    display: block !important;
+    overflow: auto !important;
+    height: 100vh;
+}
+
+agm-map{
+    height: 200px;
+    margin-top: 6px;
+    border-radius: 3px;
+}
+
+/deep/ .gm-svpc, /deep/ .gmnoprint{
+    display: none !important;
+}
+
+.itemPais{
+    background-color: #ffffffb3;
+    padding: 5px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--main-color);
+    border-top: 1px solid var(--main-color);
+}
+.caixaHistorico{
+    font-size: inherit;
+    color: #6b6b68;
+    height: 50px;
+    padding: 0px;
+    background-color: var(--cor-campo);
+    border: 0;
+    border-bottom: 1px solid #d8d8d8;
+    margin-top: 0px;
+    border-radius: 0;
+    font-weight: 600;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: pre;
+    overflow: hidden;
+    width: calc(100vw - 10px);
+}
+
+.textoSemRegistro{
+    font-size: 25px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 12px;
+}
+
+.textoHistorico{
+    text-overflow: ellipsis;
+    white-space: pre;
+    overflow: hidden;
+    padding-top: 17px;
+    width: calc(100vw - 63px);
+    padding-left: 5px;
+}
+
+.iconePlot{
+    font-size: 31px;
+    color: var(--second-color);
+    margin-top: 9px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.botaoPesquisarLocal{
+    background-color: var(--second-color);
+    border: 0;
+    height: 35px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 5px;
+    border-radius: 3px;
+    opacity: 1;
+}
+
+.botaoPesquisarLocalPeq{
+    margin-top: 0px;
+    margin-left: -40px;
+    width: 40px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.localBotaoAplicar{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100vw;
+    padding: 10px;
+}
+
+.botaoPesquisar:disabled{
+    opacity: 0.5;
+}

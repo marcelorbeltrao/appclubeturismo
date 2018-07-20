@@ -1,0 +1,52 @@
+<div [hidden]="!mostraCarregando" class="telaCarregando">
+  <div class="icoCarregando">
+    <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
+  </div>
+</div>
+
+<div flex fxLayout="column" class="caixaTela">
+  <button (click)="voltarTela()" class="botaoVoltar">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+  </button>
+  <div class="labelHeader" style="margin-left: 10px;">{{textoTela}}</div>
+  <div style="margin-top: 10px;" fxLayout="column" style="margin-top:5px;border-radius: 3px; overflow: hidden;    padding: 5px;">
+    <div [hidden]="!idCidade" style="border-radius: 5px;overflow: hidden;" >
+      <div [hidden]="tipoPacote == 1" *ngFor="let item of listaResultado">
+        <div class="itemPais">{{item.pais}}</div>
+        <button *ngFor="let cidade of item.cidades" class="caixaHistorico" (click)="historicoSelecionado(item)">
+          <div fxLayout="row" style="background-color: #ffffff0f;">
+            <div>
+              <i class="fa fa-map-marker iconePlot" aria-hidden="true"></i>
+            </div>
+            <div fxLayout="row" style="justify-content: center;">
+              <div class="textoHistorico">{{cidade.pais}}</div>
+            </div>
+          </div>
+        </button>
+      </div>
+      <button [hidden]="tipoPacote==2" *ngFor="let item of listaResultado" class="caixaHistorico" (click)="historicoSelecionado(item)">
+          <div fxLayout="row" style="background-color: #ffffff0f;">
+            <div>
+              <i class="fa fa-map-marker iconePlot" aria-hidden="true"></i>
+            </div>
+            <div fxLayout="row" style="justify-content: center;">
+              <div class="textoHistorico">{{item.pais}}</div>
+            </div>
+          </div>
+        </button>
+    </div>
+    <div [hidden]="idCidade" style="border-radius: 5px;overflow: hidden;">
+        <button *ngFor="let item of listaResultado" class="caixaHistorico" fxLayout="column" (click)="historicoSelecionado(item)">
+            <div fxLayout="row" style="background-color: #ffffff0f;">
+              <div>
+                <i class="fa fa-map-marker iconePlot" aria-hidden="true"></i>
+              </div>
+              <div fxLayout="row" style="justify-content: center;">
+                <div class="textoHistorico">{{item.pais}}</div>
+              </div>
+            </div>
+          </button>
+    </div>
+
+  </div>
+</div>

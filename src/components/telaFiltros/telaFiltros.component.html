@@ -1,0 +1,123 @@
+<div flex fxLayout="column" class="tamTelaFiltro">
+  <button (click)="voltarTela()" class="botaoVoltarTela" style="top: 10px;">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+  </button>
+
+  <button [hidden]="qtdMarcadosTotal == 0" (click)="limparSelecao()" class="botaoVoltarTela botaoLimpar" style="top: 10px;">
+      <div>LIMPAR</div>
+    </button>
+
+  <div fxLayout="column" class="localTelaFiltro">
+    <div>
+      <div class="caixaFiltro" fxLayout="row">
+        <div class="labelFiltro" (click)="abrirOrdenacao()">Ordenação</div>
+        <div class="icoSeta" >
+          <button class="botaoAbrir" (click)="abrirOrdenacao()"><i class="fa fa-arrow-down icoSetaOrdenacao" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class="ordenacaoAberto localOpcoes" >
+        <div class="itemFiltro" *ngFor="let item of listaFiltroOrdenacao" (click)="itemOrdenacaoSelecionado(item)" fxLayout="row">
+          <div class="labelItemFiltro">{{item.label}}</div>
+          <div style="margin-top: 5px;">
+            <input class="magic-radio" type="radio"  [id]="item.id" [value]="item.val" [(ngModel)]="item.selecionado">
+            <label [for]="item.id" (click)="ordenar(item.val)"></label>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div class="caixaFiltro" fxLayout="row">
+          <div class="labelFiltro" (click)="abrirPreco()">Preços</div>
+          <div class="icoSeta"  fxLayout="row">
+            <div [hidden]="qtdPrecoSelecionado == 0" class="labelSelecionado">({{qtdPrecoSelecionado}} {{labelPrecoSelecionado}})</div>
+            <button class="botaoAbrir" (click)="abrirPreco()"><i class="fa fa-arrow-down icoSetaPreco" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="precoAberto localOpcoes" >
+          <div [ngClass]="(item.qtd > 0)?'semOpaco':'opaco'" class="itemFiltro" *ngFor="let item of listaFiltroPreco" fxLayout="row" >
+            <div class="labelItemFiltro">{{item.label}}</div>
+            <div class="labelItemFiltro labelQtdPacotes">{{item.qtd}}</div>
+            <div style="margin-top: 5px;">
+              <input [disabled]="!(item.qtd > 0)" class="magic-checkbox" type="checkbox" (change)="itemPrecoSelecionado(item)" [id]="item.id" [value]="item.val" [(ngModel)]="item.selecionado">
+              <label [for]="item.id"></label>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [hidden]='modoHotel'>
+      <div>
+        <div class="caixaFiltro" fxLayout="row">
+          <div class="labelFiltro" (click)="abrirDuracao()">Duração</div>
+          <div class="icoSeta"  fxLayout="row">
+              <div [hidden]="qtdDuracaoSelecionado == 0" class="labelSelecionado">({{qtdDuracaoSelecionado}} {{labelDuracaoSelecionado}})</div>            
+              <button class="botaoAbrir" (click)="abrirDuracao()"><i class="fa fa-arrow-down icoSetaDuracao" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="duracaoAberto localOpcoes" >
+          <div [ngClass]="(item.qtd > 0)?'semOpaco':'opaco'" class="itemFiltro" *ngFor="let item of listaFiltroDiarias" fxLayout="row">
+            <div class="labelItemFiltro">{{item.label}}</div>
+            <div class="labelItemFiltro labelQtdPacotes">{{item.qtd}}</div>
+            <div style="margin-top: 5px;">
+              <input [disabled]="!(item.qtd > 0)" class="magic-checkbox" type="checkbox" [id]="item.id" (change)="itemDuracaoSelecionado(item)" [value]="item.val" [(ngModel)]="item.selecionado">
+              <label [for]="item.id"></label>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div class="caixaFiltro" fxLayout="row">
+          <div class="labelFiltro"  (click)="abrirRefeicoes()">Refeições</div>
+          <div class="icoSeta"  fxLayout="row">
+            <div [hidden]="qtdRefeicaoSelecionado == 0" class="labelSelecionado">({{qtdRefeicaoSelecionado}} {{labelRefeicaoSelecionado}})</div>            
+            <button class="botaoAbrir" (click)="abrirRefeicoes()"><i class="fa fa-arrow-down icoSetaRefeicoes" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="refeicoesAberto localOpcoes" >
+          <div [ngClass]="(item.qtd > 0)?'semOpaco':'opaco'" class="itemFiltro" *ngFor="let item of listaFiltroRefeicoes" fxLayout="row">
+            <div class="labelItemFiltro">{{item.label}}</div>
+            <div style="margin-top: 5px;">
+                <input [disabled]="!(item.qtd > 0)" class="magic-checkbox" type="checkbox" [id]="item.id" (change)="itemRefeicaoSelecionado(item)"  [value]="item.val" [(ngModel)]="item.selecionado">
+                <label [for]="item.id"></label>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [hidden]='modoHotel'>
+        <div>
+            <div class="caixaFiltro" fxLayout="row">
+              <div class="labelFiltro" (click)="abrirPessoas()">Pessoas</div>
+              <div class="icoSeta"  fxLayout="row">
+                <div [hidden]="qtdPessoasSelecionado == 0" class="labelSelecionado">({{qtdPessoasSelecionado}} {{labelPessoasSelecionado}})</div>
+                <button class="botaoAbrir" (click)="abrirPessoas()"><i class="fa fa-arrow-down icoSetaPessoas" aria-hidden="true"></i></button>
+              </div>
+            </div>
+            <div  class="pessoasAberto localOpcoes" >
+              <div [ngClass]="(item.qtd > 0)?'semOpaco':'opaco'" class="itemFiltro" *ngFor="let item of listaFiltroPessoas" fxLayout="row">
+                <div class="labelItemFiltro">{{item.label}}</div>
+                <div class="labelItemFiltro labelQtdPacotes">{{item.qtd}}</div>
+                <div style="margin-top: 5px;">
+                    <input [disabled]="!(item.qtd > 0)" class="magic-checkbox" type="checkbox" [id]="item.id"  (change)="itemPessoasSelecionado(item)"  [value]="item.val" [(ngModel)]="item.selecionado">
+                    <label [for]="item.id"></label>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+
+</div>
+<div class="localBotaoAplicar">
+  <button fxFlex="0" class="botaoPesquisar" (click)="aplicarFiltro($event)">
+    Aplicar com {{(qtdMarcadosTotal) == 0 ? qtdQuartos : qtdMarcadosTotal}} de {{qtdQuartos}}
+  </button>
+</div>

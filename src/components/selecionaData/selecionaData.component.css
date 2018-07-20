@@ -1,0 +1,261 @@
+.botaoInferior{
+    flex: 1;
+    height: 70px;
+    text-align: center;
+}
+.calendar {
+    display: block !important;
+}
+
+.ng-daterangepicker {
+    display: block;
+}
+
+/deep/.mydrp .range {
+    background-color: #f6f6f6 !important;
+}
+
+/deep/.mydrp .daycell:hover {
+    background-color: #f6f6f6 !important;
+}
+
+
+/deep/.mydrp .selecteddayend{
+    border: none;
+    background-color: #8EBFFF;
+    border-radius: 2px;
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    padding-top: 12px !important;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    height: 40px !important;
+    margin-bottom: 0px !important;
+    margin-right: 0px !important;
+    margin: auto !important;
+    font-weight: 800 !important;
+}
+
+/deep/.mydrp .selecteddaybegin{
+    border: none;
+    background-color: #8EBFFF;
+    border-radius: 2px;
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    padding-top: 12px !important;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    height: 40px !important;
+    margin-bottom: 0px !important;
+    margin-right: 0px !important; 
+    margin: auto !important;
+    font-weight: 800 !important;
+}
+
+/deep/.range>/deep/.datevalue{
+    background-color: var(--main-color) !important;
+    color: #FFFFFF !important;
+    border-radius: 22px;
+    max-width: 40px;
+    margin: auto;
+    font-weight: 600 !important;
+}
+
+/deep/ .headerbtn{
+    color: var(--main-color) !important;
+}
+
+/deep/ .weekdaytitle {
+    background-color: var(--second-color) !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    vertical-align: middle !important;
+    max-width: 36px !important;
+    padding: 15px !important;
+    color: #FFFFFF !important;
+}
+
+/deep/ .mydrpicon{
+    font-size: 34px !important;
+    width: 43px !important;
+    height: 43px !important;
+}
+
+/deep/ .daycell:focus{
+    outline: none !important;
+}
+
+/deep/ .headerokbtn {
+    display: none !important;
+}
+/deep/ .header{
+    height: 50px !important;
+}
+
+/deep/ .titlearea{
+    display: none !important;
+}
+
+/deep/ .mydrp{
+    width: auto !important;
+}
+
+/deep/ .mydrp *{
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+/deep/ .mydrpicon{
+    font-family: 'mydaterangepicker' !important;
+}
+ 
+/deep/ .selector{
+    width:auto !important;
+    border:0 !important;
+}
+
+/deep/ .weekdaytitle{
+    height:50 !important;
+}
+
+/deep/ .datevalue{
+    font-size: 16px !important;
+    min-height: 40px !important;
+    padding-top: 12px !important;
+    font-weight: bold !important;
+    color: #4e4e4e !important;
+}
+
+/deep/ .monthlabel {
+    font-weight: 700 !important;
+    color: #5a5a5a !important;
+}
+
+/deep/ .mydrp /deep/ .header /deep/ td:nth-child(3) {
+    padding-right: 4px;
+    display: none;
+}
+
+/deep/ .headermonthtxt {
+    flex: 1;
+    min-width: calc(100vw - 113px);
+    opacity: 0 !important;
+}
+
+/deep/ .headerbtncell {
+   /* display: none !important;*/
+}
+
+
+/deep/ .daycell:hover {
+    background-color: #e3cfcf !important;
+}
+
+/deep/ .nextmonth, /deep/ .prevmonth {
+    opacity: 0.3;
+}
+
+/deep/ .range {
+    background-color: #e3cfcf !important;
+}
+
+/deep/ .selecteddaybegin{
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    background-color: var(--main-color) !important;
+    color: #FFFFFF !important;
+    padding-top: 16px !important;
+    margin-left: -3px !important;
+    margin-top: -6px !important;
+    height: 50px !important;
+    margin-bottom: -9px !important;
+    margin-right: -3px !important;   
+}
+
+/deep/ .selecteddayend{
+    border-top-right-radius:0px !important;
+    border-bottom-right-radius:0px !important;
+    background-color: var(--main-color) !important;
+    color: #FFFFFF !important;
+    padding-top: 16px !important;
+    margin-left: -3px !important;
+    margin-top: -6px !important;
+    height: 50px !important;
+    margin-bottom: -9px !important;
+    margin-right: -3px !important;   
+}
+
+.seta{
+    font-size: 26px;
+    color: #FFFFFF;
+}
+
+.localAno{
+    position: absolute;
+    text-align: center;
+    display: flex;
+    top: 69px;
+    z-index: 9999;
+    font-weight: 600;
+    width: 100vw;
+    justify-content: center;    
+}
+
+.mesAnoSelecionado{
+    position: absolute;
+    flex: 0;
+    left: calc(50% - 75px );
+    width: 150px;
+    top: 116px;
+    z-index: 999;
+    text-align: center;
+    font-weight: bold;
+    color: #4a4a4a;
+}
+
+.botaoVoltar{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px !important;
+}
+
+.botaoPesquisar{
+    background-color: var(--second-color);
+    border: 0;
+    height: 70px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 5px;
+    border-radius: 0;
+}
+
+.botaoPesquisar:disabled{
+    opacity: 0.5;
+}
+
+.localBotaoAplicar{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100vw;
+    padding: 0;
+}
+
+.localDatas{
+    font-size: 22px;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif !important;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    height: 57px;
+}
+
+.calendario{
+    margin-left: 10px;
+    margin-right: 10px;
+}

@@ -1,0 +1,13 @@
+<div flex fxLayout="column" class="telaDetalhes">
+
+  <div class="camposDetalhes" fxLayout="column" >
+  </div>
+
+  <div class="localBotaoAplicar">
+    <button fxFlex="0" class="botaoPesquisar" (click)="onSair($event)">
+      Sair
+    </button>
+  </div>
+</div>
+
+<tela-texto class="telaTexto" #telaTexto [hidden]="!mostraTelaTexto" (onFechar)="onFecharTelaTexto()"></tela-texto>

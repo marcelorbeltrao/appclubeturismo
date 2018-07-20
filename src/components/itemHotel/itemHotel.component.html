@@ -1,0 +1,66 @@
+<div fxLayout="row" class="camposBotaoSelecao">
+  <div class="localFoto">
+    <img class="fotoHotel" src="{{item.foto}}">
+  </div>
+  <div class="localCamposSelecao" fxLayout="column">
+    <div [hidden]="true" style="position: relative;height: 0px;">
+      <div class="caixaDesconto">-{{item.desconto}}%</div>
+    </div>
+    <div style="flex: 1;">
+      <div class="labelLocal">{{item.name}}</div>
+      <div class="labelTitulo">{{item.titulo}}</div>
+      <div fxLayout="row">
+        <div [hidden]="!item.mostraEstrela1">
+          <i class="fa fa-star estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!item.mostraEstrela15">
+          <i class="fa fa-star-half estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!item.mostraEstrela2">
+          <i class="fa fa-star estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!item.mostraEstrela25">
+          <i class="fa fa-star-half estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!item.mostraEstrela3">
+          <i class="fa fa-star estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!item.mostraEstrela35">
+          <i class="fa fa-star-half estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!item.mostraEstrela4">
+          <i class="fa fa-star estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!item.mostraEstrela45">
+          <i class="fa fa-star-half estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!item.mostraEstrela5">
+          <i class="fa fa-star estrela" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div style="flex: 1;text-align: right;padding-top: 3px;" fxLayout="row">
+        <i class="fa fa-sun-o icoQtd" aria-hidden="true"></i>
+        <div class="lbQtd">{{item.qtdDiarias}}</div>
+        <div class="lbTextoQtd">Diárias</div>
+        <i class="fa fa-male icoQtd" aria-hidden="true"></i>
+        <div class="lbQtd">{{item.qtdPessoas}}</div>
+        <div class="lbTextoQtd">Pessoas</div>
+      </div>
+    </div>
+    <div style="flex: 1;text-align: right;margin-bottom: 13px;">
+      <div class="aPartir">Diárias a partir de</div>
+      <div class="valorPacote" fxLayout="row" [ngClass]="(item.desconto > 0)?'corVerm':'corNorm'">
+        <div class="labelReal">R$</div>
+        {{item.valor | number:'.2-2'}}
+      </div>
+    </div>
+  </div>
+</div>

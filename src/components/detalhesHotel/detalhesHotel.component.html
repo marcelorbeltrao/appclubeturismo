@@ -1,0 +1,160 @@
+<div flex fxLayout="column" class="telaDetalhes">
+
+  <div class="headerDetalhes" fxLayout="column">
+    <button (click)="voltarTela()" class="botaoVoltar" style="padding-top: 10px;">
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <div class="labelHeader labelPacote">Detalhes do hotel</div>
+  </div>
+  <div class="camposDetalhes">
+    <div class="localFoto">
+        <swiper #swiper (click)="abrirFullScreen()" height="100%" [images]="imagens"></swiper> 
+    </div>
+
+    <div style="padding: 10px;padding-left: 15px;padding-right: 15px;">
+      <div class="labelLocal">{{hotel.name}}</div>
+      <div fxLayout="row">
+        <div [hidden]="!hotel.mostraEstrela1">
+          <i class="fa fa-star estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!hotel.mostraEstrela15">
+          <i class="fa fa-star-half estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!hotel.mostraEstrela2">
+          <i class="fa fa-star estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!hotel.mostraEstrela25">
+          <i class="fa fa-star-half estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!hotel.mostraEstrela3">
+          <i class="fa fa-star estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!hotel.mostraEstrela35">
+          <i class="fa fa-star-half estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!hotel.mostraEstrela4">
+          <i class="fa fa-star estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!hotel.mostraEstrela45">
+          <i class="fa fa-star-half estrela" aria-hidden="true"></i>
+        </div>
+
+        <div [hidden]="!hotel.mostraEstrela5">
+          <i class="fa fa-star estrela" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div>
+        <div class="descricaoHotel">{{hotel.description}}</div>
+        <div style="    text-align: left;margin-bottom: 10px;margin-top: 4px;">
+          <button class="botaoMostrarMais" (click)="mostrarMaisClick()">{{textBotao}}</button>
+        </div>
+
+      </div>
+
+
+      <div class="caixaRes" fxLayout="row">
+        <i class="fa fa-sun-o icoQtd" aria-hidden="true"></i>
+        <div class="lbQtd">{{hotel.qtdDiarias}}</div>
+        <div class="lbTextoQtd">Diárias</div>
+        <div class="separador"></div>
+        <i class="fa fa-male icoQtd" aria-hidden="true"></i>
+        <div class="lbQtd">{{hotel.qtdPessoas}}</div>
+        <div class="lbTextoQtd">Pessoas</div>
+      </div>
+      <div fxLayout="row" style="justify-content: center;margin-top: 15px;    margin-bottom: 10px; font-size: 12px;    padding-left: 5px;">
+        <div>
+          <div class="lbTexto" style="text-align: center;">Válido para o período de</div>
+          <div fxLayout="row" style="margin-top: -8px;">
+            <div class="lbTexto fonteData" style="font-weight: 700;margin-top: 5px;margin-bottom: 5px;">{{hotel.dataInicio | date:'dd-MM-yyyy'}}</div>
+            <div style="padding: 9px;padding-top: 13px;padding-left: 6px;font-size: initial;">a</div>
+            <div class="lbTexto fonteData" style="font-weight: 700;margin-top: 5px;margin-bottom: 5px;">{{hotel.dataFim | date:'dd-MM-yyyy'}}</div>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" style="padding-left: 10px;padding-right: 10px;">
+        <div style="margin-top: 5px;flex: 1;text-align: right;">
+          <div class="aPartir" style="text-align: left;">Diárias a partir de</div>
+          <div class="valorPacote" fxLayout="row" style="justify-content: left;">
+            <div class="labelReal">R$</div>
+            {{hotel.valor | number:'.2-2'}}
+          </div>
+        </div>
+        <div style="margin-top: 5px;flex: 1;text-align: right;">
+          <div class="aPartir">Valor total</div>
+          <div class="valorPacote" fxLayout="row">
+            <div class="labelReal">R$</div>
+            {{hotel.valor * hotel.qtdDiarias | number:'.2-2'}}
+          </div>
+        </div>
+      </div>
+      <div style="border-top: 1px solid #33333340;padding-top: 10px;margin-top: 10px;">
+        <div class="labelLocal">Endereço do hotel</div>
+
+        <agm-map #gmapElement [latitude]="hotel.lat" [zoom]='14' [longitude]="hotel.lng">
+          <agm-marker [latitude]="hotel.lat" [longitude]="hotel.lng" [label]="hotel.label">
+          </agm-marker>
+        </agm-map>
+        <div class="lbTexto" style="margin-top: 5px;margin-bottom: 5px;    font-size: large;">{{hotel.endereco}}</div>
+        <div class="lbTexto" style="margin-top: 5px;margin-bottom: 5px;    font-size: large;">{{hotel.cidade}}</div>
+        <div class="lbTexto" style="margin-top: 5px;margin-bottom: 5px;    font-size: large;">{{hotel.zipCode}}</div>
+      </div>
+
+      <div style="border-top: 1px solid #33333340;padding-top: 10px;margin-top: 10px;">
+        <div class="labelLocal">Facilidades</div>
+        <div>
+          <div fxLayout="row" style="padding: 5px;">
+            <div class="bolaItem"></div>
+            <div>TV a cabo</div>
+          </div>
+          <div fxLayout="row" style="padding: 5px;">
+            <div class="bolaItem"></div>
+            <div>Telefone</div>
+          </div>
+          <div fxLayout="row" style="padding: 5px;">
+            <div class="bolaItem"></div>
+            <div>Telefone</div>
+          </div>
+          <div fxLayout="row" style="padding: 5px;">
+            <div class="bolaItem"></div>
+            <div>Piscina</div>
+          </div>
+          <div fxLayout="row" style="padding: 5px;">
+            <div class="bolaItem"></div>
+            <div>Ar condicionado</div>
+          </div>
+          <div fxLayout="row" style="padding: 5px;">
+            <div class="bolaItem"></div>
+            <div>Estacionamento</div>
+          </div>
+          <div fxLayout="row" style="padding: 5px;">
+            <div class="bolaItem"></div>
+            <div>Wi-fi</div>
+          </div>
+          <div fxLayout="row" style="padding: 5px;">
+            <div class="bolaItem"></div>
+            <div>Cofre</div>
+          </div>
+          <div fxLayout="row" style="padding: 5px;">
+            <div class="bolaItem"></div>
+            <div>Acesso para deficientes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <selecionar-quartos class="selecionarQuartos" #selecionarQuartos [hidden]="!mostraSelecionarQuartos" (onFechar)="onFecharSelecionarQuartos()"></selecionar-quartos>
+  <resumo-selecao class="resumoSelecao" #resumoSelecao [hidden]="!mostraResumoSelecao" (onFechar)="onFecharResumoSelecao()"></resumo-selecao>
+
+  <div class="localBotaoAplicar">
+    <button fxFlex="0" class="botaoPesquisar" (click)="onSelecionarQuartos($event)">
+      Escolher quartos
+    </button>
+  </div>

@@ -1,0 +1,24 @@
+<div [hidden]="!mostraCarregando" class="telaCarregando">
+  <div class="icoCarregando">
+    <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
+  </div>
+</div>
+
+<div flex fxLayout="column" class="caixaTela">
+  <button (click)="voltarTela()" class="botaoVoltar">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+  </button>
+  <div class="labelHeader" style="margin-left: 10px;">Selecione uma cidade</div>
+  <div style="margin-top: 10px;" fxLayout="column" style="margin-top:5px;border-radius: 3px; overflow: hidden;    padding: 5px;">
+    <button *ngFor="let item of listaResultado" class="caixaHistorico" fxLayout="column" (click)="periodoSelecionadoClick(item)">
+      <div fxLayout="row" style="background-color: #ffffff0f;">
+        <div>
+          <i class="fa fa-map-marker iconePlot" aria-hidden="true"></i>
+        </div>
+        <div fxLayout="row" style="justify-content: center;">
+          <div class="textoHistorico">{{item.month}} de {{item.year}}</div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>

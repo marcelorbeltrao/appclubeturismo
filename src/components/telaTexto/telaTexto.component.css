@@ -1,0 +1,159 @@
+.botaoInferior{
+    flex: 1;
+    height: 70px;
+    text-align: center;
+}
+
+.telaDetalhes{
+    min-height: calc(100vh - 52px);
+    background-color: #FFFFFF;
+}
+
+.headerDetalhes{
+    background-color: var(--main-color);
+    height: 42px;
+}
+
+.aPartir{
+    color: #969494;
+    font-size: 11px;
+}
+
+.localBotaoAplicar{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100vw;
+    padding: 0;
+}
+
+.botaoPesquisar{
+    background-color: var(--main-color);
+    border: 0;
+    height: 70px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 5px;
+    border-radius: 0;
+}
+resumo-selecao{
+    position: absolute;
+    top: 42px;
+    width: 100vw;
+    background-color: var(--main-color);
+    height: calc(100vh - 112px);
+    z-index: 99999;
+}
+
+.resumoSelecao{
+    height: 100vh;
+    overflow-y: auto;
+    top: 0px;
+}
+
+.labelPacote{
+    flex: 1;
+    text-align: right;
+    font-size: 12px;
+    padding-right: 11px;
+    margin-bottom: auto;
+    margin-top: -22px;
+}
+
+agm-map{
+    height: 200px;
+    margin-top: 6px;
+    border-radius: 3px;
+}
+
+.valorPacote{
+    font-weight: 700;
+    font-size: 24px;
+    justify-content: flex-end;
+    margin-top: -4px;
+}
+
+.labelCancelamento{
+    color: #1c670a;
+    font-weight: 600;
+    font-size: 10px;
+    padding-top: 5px;
+    text-align: right;
+    margin-top: -20px;    
+}
+
+.camposDetalhes{
+    height: calc(100vh - 42px);
+    overflow: auto;
+}
+
+.labelFiltro{
+    flex: 1;
+    padding-top: 11px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333232;
+}
+
+.botaoAbrir{
+    border: 0px;
+    background-color: #ffffff00;
+    color: var(--main-color);
+    font-size: 17px;
+    outline: none;
+}
+
+.icoSeta{
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.icoBeneficio{
+    font-size: 40px;
+    flex: 1;
+    text-align: center;
+}
+
+.fonteBeneficio{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.lbQtd{
+    font-size: 15px;
+    font-weight: 600;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.caixaFiltro{
+    height: 40px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.labelLocal{
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.icoQtd{
+    padding-top: 2px;
+}
+
+.lbTextoQtd{
+    font-size: 12px;
+    padding-top: 2px;
+    padding-right: 5px;
+}
+
+.labelReal{
+    font-size: 14px;
+    padding-top: 10px;
+    padding-right: 2px;
+}
+
+.localFoto{
+    height: 200px;
+    overflow: hidden;
+}

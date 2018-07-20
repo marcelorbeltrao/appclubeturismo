@@ -1,0 +1,32 @@
+<div flex fxLayout="row">
+  <button (click)="abrirDestaques()" [ngClass]="(menuSelecionado == '/destaques')?'botaoTelaSelecionado':'botaoTelaNaoSelecionado'" class="botaoInferior" routerLink="/destaques" style="border-right: 1px solid #ffffff57;">
+    <div>
+      <i class="fa fa-tags" aria-hidden="true"></i>
+      <div style="padding-top: 5px;">Destaques</div>
+    </div>
+  </button>
+    <button (click)="abrirHoteis()" [ngClass]="(menuSelecionado == '/hoteis')?'botaoTelaSelecionado':'botaoTelaNaoSelecionado'" class="botaoInferior" routerLink="/hoteis" style="border-right: 1px solid #ffffff57;">
+    <div>
+      <i class="fa fa-building-o" aria-hidden="true"></i>
+      <div style="padding-top: 5px;">Hoteis</div>
+    </div>
+  </button>
+  <button (click)="abrirPacotes()" [ngClass]="(menuSelecionado == '/pacotes')?'botaoTelaSelecionado':'botaoTelaNaoSelecionado'" class="botaoInferior" routerLink="/pacotes" style="border-right: 1px solid #ffffff57;">
+    <div>
+      <i class="fa fa-plane" aria-hidden="true"></i>
+      <div style="padding-top: 5px;">Pacotes</div>
+    </div>
+  </button>
+  <button (click)="abrirServicos()" [ngClass]="(menuSelecionado == '/servicos')?'botaoTelaSelecionado':'botaoTelaNaoSelecionado'" class="botaoInferior" routerLink="/pacotes" style="border-right: 1px solid #ffffff57;">
+    <div>
+      <i class="fa fa-list-ul" aria-hidden="true"></i>
+      <div style="padding-top: 5px;">Serviços</div>
+    </div>
+  </button>  
+  <button (click)="abrirPerfil()" [ngClass]="(menuSelecionado == '/perfil')?'botaoTelaSelecionado':'botaoTelaNaoSelecionado'" class="botaoInferior" routerLink="/perfil">
+    <div>
+      <i class="fa fa-user-circle" aria-hidden="true"></i>
+      <div style="padding-top: 5px;">Perfil</div>
+    </div>
+  </button>
+</div>

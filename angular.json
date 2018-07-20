@@ -25,7 +25,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["../appclubeturismo/node_modules/jquery/dist/jquery.min.js",
+              "../appclubeturismo/src/js/unitegallery.min.js"]
           },
           "configurations": {
             "production": {

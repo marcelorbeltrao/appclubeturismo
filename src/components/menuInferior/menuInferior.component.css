@@ -1,0 +1,26 @@
+.botaoInferior{
+    flex: 1;
+    height: 70px;
+    text-align: center;
+    background-color: #ffffff00;
+    border: 0px;  
+    font-weight: 600;
+    color: var(--main-color);
+    font-size: 11px;  
+    outline: none;    
+}
+.botaoInferior>div>i{
+    font-size: 27px;
+}
+
+.botaoInferiorSelecionado{
+    color: #FFFFFF;
+}
+
+.botaoTelaSelecionado{
+    color: #ffffff;
+}
+
+.botaoTelaNaoSelecionado{
+    color: var(--main-color);
+}

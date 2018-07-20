@@ -1,0 +1,30 @@
+<div flex fxLayout="column">
+    <button (click)="voltarTela()" class="botaoVoltar">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </button>
+
+    <div fxLayout="row" class="localDatas">
+        <div style="flex: 1;">
+            <div style="font-size: 12px;">{{dataInicio | diaSemanaSelecionadoPipe}}</div>
+            <div>{{dataInicio | diaMesSelecionadoPipe}}</div>
+        </div>
+        <div style="padding-top: 12px;opacity: 0.3;">
+            <i class="fa fa-arrow-right seta" aria-hidden="true"></i>
+        </div>
+        <div style="flex: 1;text-align: right;">
+            <div style="font-size: 12px;">{{dataFim | diaSemanaSelecionadoPipe}}</div>
+            <div>{{dataFim | diaMesSelecionadoPipe}}</div>
+        </div>
+    </div>
+
+    <div class="mesAnoSelecionado">{{mesAnoSelecionado}}</div>
+
+    <my-date-range-picker (dateSelected)="onMudouPeriodo($event)" (calendarViewChanged)="calendarViewChanged($event)" class="calendario" name="mydaterange" [options]="myDateRangePickerOptions"
+        [(ngModel)]="model" required></my-date-range-picker>
+
+    <div class="localBotaoAplicar">
+        <button [disabled]="dataFim == null" fxFlex="0" class="botaoPesquisar" (click)="aplicarData($event)">
+            Aplicar período
+        </button>
+    </div>
+</div>

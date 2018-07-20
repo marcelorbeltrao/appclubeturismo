@@ -1,0 +1,33 @@
+
+menu-inferior{
+    position: absolute;
+    bottom: 0px;
+    width: 100vw;
+    background-color: var(--second-color);
+}
+
+
+
+.headerPrincipal{
+    height: 42px;
+    background-color: var(--main-color);
+}
+
+
+.telaCarregando{
+    background-color: var(--main-color);
+    position: absolute;
+    top: 0;
+    height: calc(100vh - 70px);
+    width: 100%;
+}
+
+.icoCarregando{
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    position: relative;
+    width: 61px;
+    font-size: 62px;
+    color: #FFFFFF;    
+}

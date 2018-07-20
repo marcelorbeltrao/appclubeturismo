@@ -1,0 +1,38 @@
+<div fxLayout="row" class="camposBotaoSelecao">
+  <div class="localFoto">
+    <img class="fotoHotel" src="{{item.foto}}">
+  </div>
+  <div class="localCamposSelecao" fxLayout="column">
+    <div [hidden]="true" style="position: relative;height: 0px;">
+      <div class="caixaDesconto">-{{item.desconto}}%</div>
+    </div>
+    <div style="flex: 1;">
+      <div class="labelLocal">{{item.title}}</div>
+      <div fxLayout="row" class="localPossui">
+        <div class="labelPossui" [hidden]="!item.possuiHotel">
+          <i class="fa fa-bed icoPossui" aria-hidden="true"></i>Hotel</div>
+        <div class="labelPossui" [hidden]="!item.possuiTraslado">
+          <i class="fa fa-bus icoPossui" aria-hidden="true"></i>Traslado</div>
+        <div class="labelPossui" [hidden]="!item.possuiPasseio">
+          <i class="fa fa-bus icoPossui" aria-hidden="true"></i>
+          Passeio
+        </div>
+      </div>
+      <div style="flex: 1;text-align: right;padding-top: 3px;" fxLayout="row">
+        <i class="fa fa-sun-o icoQtd" aria-hidden="true"></i>
+        <div class="lbQtd">{{item.qtdDiarias}}</div>
+        <div class="lbTextoQtd">Diárias</div>
+        <i class="fa fa-male icoQtd" aria-hidden="true"></i>
+        <div class="lbQtd">{{item.qtdPessoas}}</div>
+        <div class="lbTextoQtd">Pessoas</div>
+      </div>
+    </div>
+    <div style="flex: 1;text-align: right;margin-bottom: 13px;">
+      <div class="aPartir">Diárias a partir de</div>
+      <div class="valorPacote" fxLayout="row" [ngClass]="(item.desconto > 0)?'corVerm':'corNorm'">
+        <div class="labelReal">R$</div>
+        {{item.valor | number:'.2-2'}}
+      </div>
+    </div>
+  </div>
+</div>

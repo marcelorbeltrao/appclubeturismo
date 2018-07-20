@@ -1,0 +1,166 @@
+<div fxLayout="column">
+    <div class="headerSeleciona" fxLayout="column">
+        <div class="labelHeader">Pesquisar por pacotes</div>
+    </div>
+</div>
+<div style="display: block !important;overflow: auto;height: calc(100vh - 216px);">
+    <div fxLayout="row" class="campoBotao campoBotoesGrupo">
+        <button fxLayout="row" class="botaoOp" (click)="clickOp(1)" style="flex:1;    border-right: 1px solid #e6e5e5;">
+            <div  [hidden]="valOpViagem == 2">
+                <i class="fa fa-dot-circle-o icoOp" aria-hidden="true"></i>
+            </div>
+            <div  [hidden]="valOpViagem == 1">
+                <i class="fa fa-circle-o icoOp" aria-hidden="true"></i>
+            </div>
+
+            <label style="padding-top: 3px;">Nacionais</label>
+        </button>
+        <button fxLayout="row" class="botaoOp" style="flex:1;" (click)="clickOp(2)">
+                <div  [hidden]="valOpViagem == 1">
+                        <i class="fa fa-dot-circle-o icoOp" aria-hidden="true"></i>
+                </div>
+                <div  [hidden]="valOpViagem == 2">
+                        <i class="fa fa-circle-o icoOp" aria-hidden="true"></i>
+                </div>
+            <label style="padding-top: 3px;">Internacionais</label>
+        </button>
+    </div>
+    <div fxLayout="row" class="localCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-map-signs icoSearch" aria-hidden="true"></i>
+        </div>
+        <button fxFlex="0" class="campoBotao campoPesquisa" (click)="selecionarLocalOrigem()" style="padding-left: 34px;text-align:left;    padding-left: 37px;
+        padding-right: 37px;">{{textoLocalOrigemSelecionado}}</button>
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-chevron-down icoSearch" aria-hidden="true" style="margin-left: -31px;font-size: 17px;padding-top: 4px;"></i>
+        </div>
+    </div>
+    <div fxLayout="row" class="localCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-map-signs icoSearch" aria-hidden="true"></i>
+        </div>
+        <button [disabled]="bloqueiaDestino" fxFlex="0" class="campoBotao campoPesquisa" (click)="selecionarLocalDestino()" style="padding-left: 34px;text-align:left;    padding-left: 37px;
+        padding-right: 37px;">{{textoLocalDestinoSelecionado}}</button>
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-chevron-down icoSearch" aria-hidden="true" style="margin-left: -31px;font-size: 17px;padding-top: 4px;"></i>
+        </div>
+    </div>
+    <div fxLayout="row" class="localCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-calendar icoSearch" aria-hidden="true"></i>
+        </div>
+        <button [disabled]="bloqueiaPeriodo" fxFlex="0" class="campoBotao campoData" style="padding-left: 34px;text-align: left;    padding-left: 37px;
+        padding-right: 37px;"
+            (click)="selecionarPeriodo()">{{valPeriodoSelecionado}}</button>
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-chevron-down icoSearch" aria-hidden="true" style="margin-left: -31px;font-size: 17px;padding-top: 4px;"></i>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="localCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-search icoSearch" aria-hidden="true"></i>
+        </div>
+        <button [disabled]="bloqueiaTipoProduto" fxFlex="0" class="campoBotao campoData" style="padding-left: 34px;text-align: left;    padding-left: 37px;
+        padding-right: 37px;" (click)="selecionarTipoProduto()">{{valTipoProdutoSelecionado}}</button>
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-chevron-down icoSearch" aria-hidden="true" style="margin-left: -31px;font-size: 17px;padding-top: 4px;"></i>
+        </div>
+    </div>
+
+    <div fxLayout="row" class="localCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-key icoSearch" aria-hidden="true"></i>
+        </div>
+        <button fxFlex="0" class="campoBotao campoData">
+            <div fxLayout="row" class="localCampos">
+                <div class="labelDesc">Quartos</div>
+                <div fxLayout="row" style="width: 115px;">
+                    <button [ngClass]="(qtdQuartos == 4 )?'btDesab':'btNorm'" class="botaoQtd" (click)="aumentaQtdQuarto()">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                    <div class="lbQtd">{{qtdQuartos}}</div>
+                    <button [ngClass]="(qtdQuartos == 1 )?'btDesab':'btNorm'" class="botaoQtd" (click)="diminuiQtdQuarto()">
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </button>
+    </div>
+
+    <div fxLayout="row" class="localCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-male icoSearch" aria-hidden="true"></i>
+        </div>
+
+        <button fxFlex="0" class="campoBotao campoData">
+            <div fxLayout="row" class="localCampos">
+                <div class="labelDesc">Adultos</div>
+                <div fxLayout="row" style="width: 115px;">
+                    <button [ngClass]="(qtdAdultos == 4 )?'btDesab':'btNorm'" class="botaoQtd" (click)="aumentaQtdAdultos()">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                    <div class="lbQtd">{{qtdAdultos}}</div>
+                    <button [ngClass]="(qtdAdultos == 1 )?'btDesab':'btNorm'" class="botaoQtd" (click)="diminuiQtdAdultos()">
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </button>
+    </div>
+
+    <div fxLayout="row" class="localCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-child icoSearch" aria-hidden="true"></i>
+        </div>
+
+        <button fxFlex="0" class="campoBotao campoData">
+
+
+            <div fxLayout="row" class="localCampos">
+                <div class="labelDesc">Crianças</div>
+                <div fxLayout="row" style="width: 115px;">
+                    <button [ngClass]="(qtdCriancas == 3 )?'btDesab':'btNorm'" class="botaoQtd" (click)="aumentaQtdCriancas()">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                    <div class="lbQtd">{{qtdCriancas}}</div>
+                    <button [ngClass]="(qtdCriancas == 0 )?'btDesab':'btNorm'" class="botaoQtd" (click)="diminuiQtdCriancas()">
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </button>
+    </div>
+
+    <div fxLayout="column" class="localInfo containerCrianca" [hidden]="listaCriancas.length == 0">
+        <button fxLayout="row" *ngFor="let item of listaCriancas" class="campoBotao campoData localInfoCrianca" style="padding-left: 15px;padding-right: 15px;">
+            <div class="labelDesc labelCrianca">
+                {{item.label}}
+            </div>
+            <div fxLayout="row" style="width: 115px;">
+                <button [ngClass]="(item.idadeCrianca == 12 )?'btDesab':'btNorm'" class="botaoQtd" (click)="aumentaIdadeCrianca(item)">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+                <div class="lbQtd lbIdadeCrianca" [ngClass]="(item.idadeCrianca == 0 )?'lbQtdPeq':'lbQtdNorm'">{{item.idadeCrianca | idadeCriancaPipe:item}}</div>
+                <button [ngClass]="(item.idadeCrianca == 0 )?'btDesab':'btNorm'" class="botaoQtd" (click)="diminuiIdadeCrianca(item)">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+            </div>
+        </button>
+    </div>
+
+    <div class="localBotaoAplicar">
+        <button fxFlex="0" [disabled]="!mesSelecionado" (click)="onFiltroClick()" class="botaoPesquisar" style="background-color: var(--second-color);">
+            Pesquisar por pacotes
+        </button>
+    </div>
+</div>
+
+<selecione-cidade #procuraLocalFiltroOrigem class="procuraLocalFiltroOrigem" (localSelecionado)="localOrigemSelecionado($event)"
+    [hidden]="!mostraProcuraLocalOrigem" (onFechar)="onFecharProcuraLocalOrigem()"></selecione-cidade>
+<selecione-cidade #procuraLocalFiltroDestino class="procuraLocalFiltroDestino" (localSelecionado)="localDestinoSelecionado($event)"
+    [hidden]="!mostraProcuraLocalDestino" (onFechar)="onFecharProcuraLocalDestino()"></selecione-cidade>
+<selecione-periodo #selecionePeriodo (periodoSelecionado)="periodoSelecionado($event)" class="selecionePeriodo" [hidden]="!mostraSelecionePeriodo"
+    (onFechar)="onFecharSelecionePeriodo()"></selecione-periodo>
+<selecione-tipo-produto #selecioneTipoProduto (tipoProdutoSelecionado)="tipoProdutoSelecionado($event)" class="selecioneTipoProduto"
+    [hidden]="!mostraSelecionarTipoProduto" (onFechar)="onFecharSelecioneTipoProduto()"></selecione-tipo-produto>

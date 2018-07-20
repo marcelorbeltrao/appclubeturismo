@@ -1,0 +1,59 @@
+<div class="telaDestaque" flex fxLayout="column">
+  <div class="headerDestaques" fxLayout="column">
+    <div class="labelHeader">Destaques</div>
+    <div fxLayout="row">
+      <button class="botaoMenu" (click)="mostrarHoteis()" [ngClass]="(mostrandoHoteis)?'selecaoComBorda':'selecaoSemBorda'">HOTÉIS</button>
+      <button class="botaoMenu" (click)="mostrarPacotes()" [ngClass]="(mostrandoHoteis)?'selecaoSemBorda':'selecaoComBorda'">PACOTES</button>
+    </div>
+    <div fxLayout="column">
+      <div fxLayout="row" class="localCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 0;">
+          <i class="fa fa-search icoSearch" aria-hidden="true"></i>
+        </div>
+        <button fxFlex="0" class="campoBotao campoPesquisa" (click)="selecionarLocal()" style="text-align:left;">{{textoPesquisa}}</button>
+        <div style="width:0px;">
+          <button class="botaoPesquisar botaoPesquisarPeq" (click)="selecionarLocal()">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+
+      </div>
+      <div fxLayout="column" class="camposHotel">
+        <div fxLayout="row" class="localCampos">
+          <div class="iconeSearchGD" style="width:0px;z-index: 0;">
+            <i class="fa fa-calendar icoSearch" aria-hidden="true"></i>
+          </div>
+          <button fxFlex="0" class="campoBotao campoData"  (click)="selecionarData()">{{valPeriodoSelecionado}}</button>
+          <div style="width:10px;"></div>
+          <div class="iconeSearchGD" style="width:0px;z-index: 0;">
+              <i class="fa fa-users icoSearch" aria-hidden="true"></i>
+          </div>          
+          <button fxFlex="0" class="campoBotao campoHospedes"  (click)="selecionarPessoas()">{{qtdHospedesPesquisa}} hóspedes</button>
+        </div>
+
+        <button fxFlex="0" class="botaoPesquisar" (click)="pesquisarDestaques()">
+          Pesquisar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="column" class="listaSelecao">
+    <button class="itemSelecao" *ngFor="let item of items" (click)="itemSelecionado(item)"  >
+        <item-pacote [dados]="item"></item-pacote>
+    </button>
+  </div>
+</div>
+
+<div [hidden]="!mostraCarregando" class="telaCarregando">
+  <div class="icoCarregando">
+      <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
+  </div>
+</div>
+
+<detalhes-pacote class="detalhes" [hidden]="!mostraDetalhesPacote" (onFechar)="onFecharDetalhes()"></detalhes-pacote>
+<procura-local (localSelecionado)="localSelecionado($event)" class="procuraLocal" [hidden]="!mostraProcuraLocal" (onFechar)="onFecharProcuraLocal()"></procura-local>
+<seleciona-data (periodoSelecionado)="periodoSelecionado($event)" class="selecionaData" [hidden]="!mostraSelecionaData" (onFechar)="onFecharSelecionaData()"></seleciona-data>
+
+<div class="bloqueioPessoas" [hidden]="!mostraSelecionaPessoas" (click)="onFecharSelecionaPessoas()"></div>
+<seleciona-pessoas (qtdPessoasChange)="qtdPessoasChange($event)" class="selecionaPessoas" [hidden]="!mostraSelecionaPessoas"></seleciona-pessoas>

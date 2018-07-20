@@ -1,0 +1,21 @@
+<div flex fxLayout="column" class="telaDetalhes">
+  <div class="textoSelecionado">{{textoLocalSelecionado}}</div>
+
+  <button (click)="voltarTela()" class="botaoVoltarTela">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+  </button>
+
+  <div class="headerPacotes" fxLayout="column">
+    <div fxLayout="column">
+
+    </div>
+  </div>
+  <div style="    height: 100vh;">
+    <agm-map #gmapElement  [latitude]="pontoLocalSelecionado.lat" [longitude]="pontoLocalSelecionado.lng">
+      <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat" [longitude]="m.lng"
+        [label]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)">
+      </agm-marker>
+    </agm-map>
+  </div>
+
+</div>

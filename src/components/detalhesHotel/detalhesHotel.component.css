@@ -1,0 +1,294 @@
+.botaoInferior{
+    flex: 1;
+    height: 70px;
+    text-align: center;
+}
+
+.telaDetalhes{
+    min-height: calc(100vh - 52px);
+    background-color: #FFFFFF;
+}
+
+.separador{
+    background-color: #b5b2b2;
+    width: 1px;
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.caixaRes{
+    justify-content: center;
+    flex: 1 1 0%;
+    text-align: right;
+    padding-top: 5px;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    border: 1px solid #dfdfdf;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    margin-top: 24px;
+}
+
+.icoSearch{
+    margin-left: 3px;
+    margin-top: 7px;
+    color: var(--main-color);
+    font-size: 20px;
+    margin-right: 4px;
+}
+
+.estiloCentroVertical{
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    position: relative;
+}
+
+.camposValor{
+    min-width: 90px;
+    text-align: right;
+}
+
+.labelTituloValor{
+    
+}
+
+
+
+.itemQuarto{
+    padding-right: 10px;
+    padding-top: 5px;
+    min-height: 50px;
+    border: 0;
+    border-radius: 3px;
+    background-color: #ddd8d863;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.labelValor{
+    font-weight: 600;
+    font-size: 20px;
+    padding-top: 3px;
+}
+.labelNomeQuarto{
+    font-weight: 600;
+    font-size: 15px;
+}
+.labelQuarto{
+    flex: 1;
+    text-align: left;
+    margin-left: 5px;
+}
+
+.estrela{
+    color: #f8c205eb;
+    padding: 3px;
+    padding-left: 0px;
+    padding-top: 2px;
+    padding-bottom: 5px;
+}
+
+.descricaoHotel{
+    height: 66px;
+    overflow: hidden;
+    text-align: justify;
+    margin-top: 9px;
+    margin-bottom: 10px;
+}
+
+.botaoMostrarMais{
+    margin-top: 0px;
+    border: 0px;
+    background-color: var(--main-color) !important;
+    border-radius: 3px;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    color: #FFFFFF;
+}
+.headerDetalhes{
+    background-color: var(--main-color);
+    height: 42px;
+}
+
+.aPartir{
+    color: initial;
+    font-size: initial;
+    margin-bottom: 2px;
+}
+
+.bolaItem{
+    width: 8px;
+    height: 8px;
+    background-color: var(--main-color);
+    border-radius: 8px;
+    margin-top: 8px;
+    margin-right: 9px;
+}
+
+.localBotaoAplicar{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100vw;
+    padding: 0;
+}
+
+
+
+.botaoPesquisar{
+    background-color: var(--main-color);
+    border: 0;
+    height: 70px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 5px;
+    border-radius: 0;
+}
+resumo-selecao{
+    position: absolute;
+    top: 42px;
+    width: 100vw;
+    background-color: var(--main-color);
+    height: calc(100vh - 112px);
+    z-index: 99999;
+}
+
+selecionar-quartos{
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    background-color: var(--main-color);
+    height: 100vh;
+    z-index: 99999;
+}
+
+.resumoSelecao{
+    height: 100vh;
+    overflow-y: auto;
+    top: 0px;
+}
+
+.labelPacote{
+    flex: 1;
+    text-align: right;
+    font-size: 12px;
+    padding-right: 11px;
+    margin-bottom: auto;
+    margin-top: -22px;
+}
+
+agm-map{
+    height: 200px;
+    margin-top: 6px;
+    border-radius: 3px;
+}
+
+.valorPacote{
+    font-weight: 700;
+    font-size: 26px;
+    justify-content: flex-end;
+    margin-top: -4px;
+}
+
+.labelCancelamento{
+    color: #1c670a;
+    font-weight: 600;
+    font-size: 10px;
+    padding-top: 5px;
+    text-align: right;
+    margin-top: -20px;    
+}
+
+.camposDetalhes{
+    height: calc(100vh - 111px);
+    overflow: auto;
+}
+
+.labelFiltro{
+    flex: 1;
+    padding-top: 11px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333232;
+}
+
+.botaoAbrir{
+    border: 0px;
+    background-color: #ffffff00;
+    color: var(--main-color);
+    font-size: 17px;
+    outline: none;
+}
+
+.icoSeta{
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.icoBeneficio{
+    font-size: 40px;
+    flex: 1;
+    text-align: center;
+}
+
+.fonteBeneficio{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.lbQtd{
+    font-size: 25px;
+    font-weight: 600;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.caixaFiltro{
+    height: 40px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.labelLocal{
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.icoQtd{
+    padding-top: 8px;
+    font-size: 23px;
+    padding-left: 10px;
+    padding-right: 5px;
+    color: var(--main-color);
+}
+
+.lbTexto{
+    font-size: initial;
+    padding-top: 5px;
+    padding-right: 5px;  
+}
+.lbTextoQtd{
+    font-size: 18px;
+    padding-top: 7px;
+    padding-right: 5px;
+}
+
+.fonteData{
+    color: inherit;
+    font-size: 20px;
+}
+
+.labelReal{
+    font-size: 14px;
+    padding-top: 13px;
+    padding-right: 5px;
+}
+
+.localFoto{
+    height: 200px;
+    overflow: hidden;
+}

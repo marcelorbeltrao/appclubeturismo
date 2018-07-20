@@ -1,0 +1,133 @@
+.headerSeleciona{
+    padding: 15px;
+    display: block !important;
+}
+
+.labelHeader{
+    padding-bottom: 10px;
+}
+
+.botaoPesquisar{
+    background-color: var(--main-color);
+    border: 0;
+    height: 48px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 5px;
+    border-radius: 3px;
+}
+
+
+.btDesab{
+    opacity: 0.5;
+}
+
+.btNorm{
+    opacity: 1;
+}
+
+.containerCrianca{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.botaoPesquisar:disabled{
+    opacity: 0.5;
+}
+
+.labelDesc{
+    font-weight: 700;
+    color: var(--main-color);
+    flex: 1;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 24px;
+    padding-top: 7px;
+}
+
+.localBotaoAplicar{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100vw;
+    padding: 10px;
+}
+
+.localCampos{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.botaoPesquisarPeq{
+    margin-top: 0px;
+    margin-left: -40px;
+    width: 40px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.campoBotao {
+    height: 45px;
+    background-color:  var(--cor-campo);
+    border: 0px;
+    border-radius: 3px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: pre;
+    overflow: hidden;
+    flex: 1;
+    margin-bottom: 5px;    
+}
+
+.lbQtd{
+    width: 60px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--main-color);
+    padding-top: 6px;
+}
+
+    
+.lbQtdPeq{
+    font-size: 11px;
+    white-space: pre-line;   
+    padding-top: 3px; 
+}
+
+.lbQtdNorm{
+    font-size: 11px;
+    padding-top: 8px;
+}
+
+.botaoQtd{
+    border: 0px;
+    min-width: 30px;
+    min-height: 30px; 
+    border-radius: 30px;
+    outline: none;
+    color: var(--main-color);
+    padding-top: 2px;
+}
+
+procura-local, seleciona-data{
+    position: absolute;
+    top: 42px;
+    width: 100vw;
+    background-color: var(--main-color);
+    height: calc(100vh - 112px);
+    z-index: 99999;
+}
+
+seleciona-data, procura-local{
+    height: 100vh;
+    top:0px;
+    z-index: 9999999;
+}
+
+
+.icoSearch {
+    margin-left: 10px;
+    margin-top: 15px;
+    color: var(--main-color);
+}

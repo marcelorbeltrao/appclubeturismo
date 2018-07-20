@@ -1,0 +1,214 @@
+
+
+
+
+
+
+
+.aPartir{
+    color: #969494;
+    font-size: 11px;
+    margin-bottom: 8px;
+}
+
+.valorPacote{
+    font-weight: 700;
+    font-size: 24px;
+    justify-content: flex-end;
+    margin-top: -4px;
+}
+
+.labelCancelamento{
+    color: #34981c;
+    font-weight: 600;
+    font-size: 10px;
+    padding-top: 2px;
+}
+
+.labelTitulo{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    max-height: 30px;
+}
+
+.lbQtd{
+    font-size: 15px;
+    font-weight: 600;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.labelLocal{
+    font-weight: 600;
+}
+
+.icoQtd{
+    padding-top: 2px;
+}
+
+.lbTextoQtd{
+    font-size: 11px;
+    padding-top: 2px;
+    padding-right: 11px;
+}
+
+.labelReal{
+    font-size: 14px;
+    padding-top: 8px;
+    padding-right: 2px;
+}
+
+.localFoto{
+    height: 110px;
+    overflow: hidden;
+}
+
+.telaDestaque{
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    display: block !important;
+}
+
+.campoProcurar{
+    padding-left: 28px;
+}
+
+.campoBotao{
+    height: 35px;
+    background-color:  var(--cor-campo);
+    border: 0px;
+    border-radius: 3px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: pre;
+    overflow: hidden;    
+}
+
+
+
+.botaoPesquisar{
+    background-color: var(--second-color);
+    border: 0;
+    height: 35px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 5px;
+    border-radius: 3px;
+}
+
+.headerDestaques{
+    background-color: var(--main-color);
+    padding: 10px;
+    display: block !important;
+}
+
+.localCampos{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+detalhes-pacote, procura-local, seleciona-data, seleciona-pessoas{
+    position: absolute;
+    top: 42px;
+    width: 100vw;
+    background-color: var(--main-color);
+    height: calc(100vh - 112px);
+    z-index: 99999;
+}
+
+.bloqueioPessoas{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #333333bf;
+    top: 0;
+}
+
+.campoHospedes{
+    max-width: 111px;
+    padding-left: 22px;
+}
+
+.telaCarregando{
+    background-color: var(--main-color);
+    position: absolute;
+    top: 0;
+    height: calc(100vh - 70px);
+    width: 100%;
+}
+
+.icoCarregando{
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    position: relative;
+    width: 61px;
+    font-size: 62px;
+    color: #FFFFFF;    
+}
+
+.campoData{
+    padding-left: 35px;
+}
+
+seleciona-data, detalhes-pacote, procura-local{
+    height: 100vh;
+    top:0px;
+    z-index: 9999999;
+}
+
+seleciona-pessoas{
+    margin-left: 0px;
+    top: 175px;
+    background-color: var(--second-color);
+    height: calc(100vh - 175px);
+}
+
+.botaoPesquisarPeq{
+    margin-top: 0px;
+    margin-left: -40px;
+    width: 40px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    opacity: 0;
+}
+
+.selecaoComBorda{
+    border-bottom: 5px solid var(--second-color) !important;
+    outline: none;
+}
+
+.selecaoSemBorda{
+    border-bottom: 5px solid var(--main-color) !important;
+    outline: none;
+}
+
+.listaSelecao{
+    display: flex;
+    overflow-x: hidden;
+    padding-top: 5px;
+    padding-bottom: 5px;    
+    padding-left: 5px;
+    padding-right: 5px;    
+}
+
+.icoSearch{
+    margin-left: 10px;
+    margin-top: 9px;
+    color: var(--main-color);
+}
+
+.mostrandoPacote{
+    height: calc(100vh - 262px);
+}
+
+.botaoMenu{
+    background: #ffffff00;
+    height: 40px;
+    font-size: 12px;
+    padding: 10px;
+    border: 0px;
+    color: #FFFFFF;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
