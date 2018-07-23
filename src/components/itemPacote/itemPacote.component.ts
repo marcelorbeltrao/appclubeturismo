@@ -25,6 +25,9 @@ export class ItemPacoteComponent implements OnInit {
   ngOnInit() {
     this.item = this.dados;
 
+    this.item.qtdDiarias = this.item.nights;
+    this.item.qtdPessoas = this.item.qtdPessoas;
+
     for (var t = 0; t < this.item.includedServices.length; t++) {
       var itm = this.item.includedServices[t];
 
@@ -37,6 +40,9 @@ export class ItemPacoteComponent implements OnInit {
           break;
         case 'Ride':
           this.item.possuiPasseio = true;
+          break;
+        case 'Flight':
+          this.item.possuiAviao = true;
           break;
       }
     }

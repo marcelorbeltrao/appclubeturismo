@@ -1,0 +1,90 @@
+<div fxLayout="column">
+    <div class="headerSeleciona" fxLayout="column">
+        <div class="labelHeader">Pesquisar por serviços</div>
+    </div>
+</div>
+<div fxLayout="column">
+    <div fxLayout="row" class="localCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-search icoSearch" aria-hidden="true"></i>
+        </div>
+        <button fxFlex="0" class="campoBotao campoPesquisa" (click)="selecionarLocal()" style="padding-left: 34px;text-align:left;">{{textoLocalSelecionado}}</button>
+
+    </div>
+    <div fxLayout="row" class="localCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-calendar icoSearch" aria-hidden="true"></i>
+        </div>
+        <button fxFlex="0" class="campoBotao campoData" style="padding-left: 34px;text-align: left;" (click)="selecionarData()">{{valPeriodoSelecionado}}</button>
+    </div>
+
+    <div fxLayout="row" class="localCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-male icoSearch" aria-hidden="true"></i>
+        </div>
+
+        <button fxFlex="0" class="campoBotao campoData">
+            <div fxLayout="row" class="localCampos">
+                <div class="labelDesc">Adultos</div>
+                <div fxLayout="row" style="width: 115px;">
+                    <button [ngClass]="(qtdAdultos == 4 )?'btDesab':'btNorm'" class="botaoQtd" (click)="aumentaQtdAdultos()">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                    <div class="lbQtd">{{qtdAdultos}}</div>
+                    <button [ngClass]="(qtdAdultos == 1 )?'btDesab':'btNorm'" class="botaoQtd" (click)="diminuiQtdAdultos()">
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </button>
+    </div>
+
+    <div fxLayout="row" class="localCampos">
+        <div class="iconeSearchGD" style="width:0px;z-index: 999;">
+            <i class="fa fa-child icoSearch" aria-hidden="true"></i>
+        </div>
+
+        <button fxFlex="0" class="campoBotao campoData">
+
+
+            <div fxLayout="row" class="localCampos">
+                <div class="labelDesc">Crianças</div>
+                <div fxLayout="row" style="width: 115px;">
+                    <button [ngClass]="(qtdCriancas == 3 )?'btDesab':'btNorm'" class="botaoQtd" (click)="aumentaQtdCriancas()">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                    <div class="lbQtd">{{qtdCriancas}}</div>
+                    <button [ngClass]="(qtdCriancas == 0 )?'btDesab':'btNorm'" class="botaoQtd" (click)="diminuiQtdCriancas()">
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </button>
+    </div>
+
+    <div fxLayout="column" class="localInfo containerCrianca" [hidden]="listaCriancas.length == 0">
+        <button fxLayout="row" *ngFor="let item of listaCriancas" class="campoBotao campoData localInfoCrianca" style="padding-left: 15px;padding-right: 15px;">
+            <div class="labelDesc labelCrianca">
+                {{item.label}}
+            </div>
+            <div fxLayout="row" style="width: 115px;">
+                <button [ngClass]="(item.idadeCrianca == 12 )?'btDesab':'btNorm'" class="botaoQtd" (click)="aumentaIdadeCrianca(item)">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+                <div class="lbQtd lbIdadeCrianca" [ngClass]="(item.idadeCrianca == 0 )?'lbQtdPeq':'lbQtdNorm'">{{item.idadeCrianca | idadeCriancaPipe:item}}</div>
+                <button [ngClass]="(item.idadeCrianca == 0 )?'btDesab':'btNorm'" class="botaoQtd" (click)="diminuiIdadeCrianca(item)">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+            </div>
+        </button>
+    </div>
+
+    <div class="localBotaoAplicar">
+        <button fxFlex="0" [disabled]="!cidadeSelecionada" (click)="onFiltroClick()" class="botaoPesquisar" style="background-color: var(--second-color);">
+            Pesquisar por serviços
+        </button>
+    </div>
+</div>
+
+<procura-local class="procuraLocalFiltroHotel" (localSelecionado)="localSelecionado($event)"  [hidden]="!mostraProcuraLocal" (onFechar)="onFecharProcuraLocal()"></procura-local>
+<seleciona-data (periodoSelecionado)="periodoSelecionado($event)" class="selecionaDataFiltroHotel" [hidden]="!mostraSelecionaData" (onFechar)="onFecharSelecionaData()"></seleciona-data>

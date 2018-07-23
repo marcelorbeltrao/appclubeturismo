@@ -16,7 +16,7 @@
         <i class="fa fa-search" aria-hidden="true"></i>
       </button>
     </div>
-    <div [hidden]='listaResultado.length > 0' class="textoSemRegistro">Oops, nenhuma cidade encontrada</div>
+    <div [hidden]='(listaResultado.length > 0)' class="textoSemRegistro">Oops, nenhuma cidade encontrada</div>
     <div style="margin-top: 10px;" fxLayout="column" style="margin-top:5px;border-radius: 3px; overflow: hidden;">
       <button *ngFor="let item of listaResultado" class="caixaHistorico" fxLayout="column" (click)="localSelecionadoClick(item)">
         <div fxLayout="row" style="background-color: #ffffff0f;">

@@ -1,8 +1,8 @@
 <div class="headerHotel" fxLayout="row">
-    <button (click)="voltarFiltro()" class="botaoVoltarHotel" style="top: 10px;">
+    <button (click)="voltarTela()" class="botaoVoltarHotel" style="top: 10px;">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
     </button>
-    <div class="textoSelecionado">{{textoLocalSelecionado}}</div>
+    <div class="textoSelecionado">Selecione um hotel</div>
     <button (click)="selecionarLocal()" class="botaoVoltarHotel" style="top: 10px;left: auto;margin-right: 7px;">
         <i class="fa fa-search" aria-hidden="true"></i>
     </button>
@@ -50,27 +50,12 @@
 
 <div class="telaPacotes" flex fxLayout="row" (scroll)="onScroll($event)">
 
-    <div class="headerPacotes" fxLayout="column">
-        <div fxLayout="column">
-            <div fxLayout="row" class="localCampos">
-                <div class="iconeSearchGD" style="width:0px;z-index: 0;">
-                    <i class="fa fa-calendar icoSearch" aria-hidden="true"></i>
-                </div>
-                <button fxFlex="0" class="campoBotao campoData" (click)="selecionarData()">{{valPeriodoSelecionado}}</button>
-                <div style="width:10px;"></div>
-                <div class="iconeSearchGD" style="width:0px;z-index: 0;">
-                    <i class="fa fa-users icoSearch" aria-hidden="true"></i>
-                </div>
-                <button fxFlex="0" class="campoBotao campoHospedes" (click)="selecionarPessoas()">{{qtdHospedesPesquisa}} hóspedes</button>
-            </div>
-        </div>
-    </div>
-    <div [hidden]="filtroFiltroAplicado == true" style="padding-left: 10px;padding-top: 5px;">
+    <div style="padding-left: 10px;padding-top: 0px;padding-right: 4px;">
         <label class="qtdQuartos">
             <tbody>
                 <tr fxLayout="row">
-                    <th class="qtd">{{itemsOriginal.length}}</th>
-                    <th>hoteis encontrados, com </th>
+                    <th class="qtd">{{items.length}}</th>
+                    <th>hoteis disponívels, com </th>
                     <th class="qtd" style="padding-left: 5px;">{{qtdQuartos}}</th>
                 </tr>
             </tbody>
@@ -81,7 +66,7 @@
 
     <div fxLayout="column" class="listaSelecao">
         <button fxLayout="column" class="itemSelecao" *ngFor="let item of items" (click)="itemSelecionado(item)">
-            <item-hotel fxLayout="row" [dados]="item"></item-hotel>
+            <item-hotel-pacote fxLayout="row" [dados]="item"></item-hotel-pacote>
         </button>
     </div>
 </div>
@@ -100,12 +85,3 @@
 
 <tela-filtros modoHotel="true" #telaFiltroComp class="telaFiltro" (onFiltroAplicado)="onFiltroFiltroAplicado($event)" [hidden]="!mostraTelaFiltro"
     (onFechar)="onFecharFiltro()"></tela-filtros>
-<filtro-hotel (onFiltro)="onFiltroHotel($event)" [hidden]="!mostraPesquiarHotel" class="filtroHotel"></filtro-hotel>
-<seleciona-data (periodoSelecionado)="periodoSelecionado($event)" #selecionaDataHotel class="selecionaData" [hidden]="!mostraSelecionaData"
-    (onFechar)="onFecharSelecionaData()"></seleciona-data>
-<detalhes-hotel #detalhesHotel class="detalhes" [hidden]="!mostraDetalhesHotel" (onFechar)="onFecharDetalhes()"></detalhes-hotel>
-<procura-local (localSelecionado)="localSelecionado($event)" class="procuraLocal" [hidden]="!mostraProcuraLocal" (onFechar)="onFecharProcuraLocal()"></procura-local>
-<tela-mapa class="telaMapa" #telaMapaHotel [hidden]="!mostraTelaMapa" (onFechar)="onFecharMapa()"></tela-mapa>
-
-<div class="bloqueioPessoas" [hidden]="!mostraSelecionaPessoas" (click)="onFecharSelecionaPessoas()"></div>
-<seleciona-pessoas (qtdPessoasChange)="qtdPessoasChange($event)" #selecionaPessoasHotel class="selecionaPessoas" [hidden]="!mostraSelecionaPessoas"></seleciona-pessoas>

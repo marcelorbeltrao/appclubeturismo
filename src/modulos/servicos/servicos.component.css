@@ -1,4 +1,4 @@
-detalhes-pacote, selecione-periodo, procura-local, seleciona-data, seleciona-pessoas{
+detalhes-hotel, procura-local, seleciona-data, seleciona-pessoas{
     position: absolute;
     top: 0px;
     width: 100vw;
@@ -7,13 +7,13 @@ detalhes-pacote, selecione-periodo, procura-local, seleciona-data, seleciona-pes
     z-index: 99999;
 }
 
-seleciona-data, detalhes-pacote, procura-loca, selecione-periodo{
+seleciona-data, detalhes-hotel, procura-local{
     height: 100vh;
     z-index: 99999999999;
     top:0px;
 }
 
-detalhes-pacote{
+detalhes-hotel{
     height: 100vh;
     z-index: 9999999;
     background-color: #FFFFFF;
@@ -113,7 +113,7 @@ th{
     padding: 0;
     overflow: hidden;
     min-height: 160px;
-    max-height: initial;
+    max-height: 180px;
 }
 
 .telaFiltro{
@@ -183,7 +183,7 @@ procura-local{
     padding-top: 13px;
 }
 
-filtro-pacote{
+filtro-servicos{
     margin-left: 0px;
     top: 0px;
     background-color: var(--main-color);
@@ -195,9 +195,8 @@ filtro-pacote{
 }
 
 .campoHospedes {
-    max-width: 138px;
+    max-width: 111px;
     padding-left: 22px;
-    min-width: 138px;
 }
 
 .campoData {

@@ -14,28 +14,17 @@
     height: 42px;
 }
 
-.labelPossui{
-    font-size: 11px;
-    padding-right: 4px;
-}
-
-.icoPossui{
-    padding-right: 3px;
-    padding-left: 2px;
-    color: var(--main-color);
-}
-
-.localPossui{
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
 .estrela{
     color: #f8c205eb;
     padding: 3px;
     padding-left: 0px;
     padding-top: 2px;
     padding-bottom: 5px;
+}
+
+.icoBed{
+    font-size: 22px;
+    color: var(--main-color);
 }
 
 .camposBotaoSelecao{
@@ -67,8 +56,21 @@
     position: relative;
 }
 
+.caixaDisponivel{
+    background-color: #e23a3a94;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-size: x-small;
+    margin-top: 9px;
+    margin-right: 7px;
+    padding-bottom: 5px;
+}
+
 .itemSelecao{
-    max-height: 183px;
+    max-height: auto;
 }
 
 .aPartir{

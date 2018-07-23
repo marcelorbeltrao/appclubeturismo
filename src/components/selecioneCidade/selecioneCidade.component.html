@@ -10,42 +10,39 @@
   </button>
   <div class="labelHeader" style="margin-left: 10px;">{{textoTela}}</div>
   <div style="margin-top: 10px;" fxLayout="column" style="margin-top:5px;border-radius: 3px; overflow: hidden;    padding: 5px;">
-    <div [hidden]="!idCidade" style="border-radius: 5px;overflow: hidden;" >
-      <div [hidden]="tipoPacote == 1" *ngFor="let item of listaResultado">
-        <div class="itemPais">{{item.pais}}</div>
-        <button *ngFor="let cidade of item.cidades" class="caixaHistorico" (click)="historicoSelecionado(item)">
+    <div [hidden]="!idCidade" style="border-radius: 5px;overflow: hidden;">
+      <div fxLayout="column">
+        <div [hidden]="tipoPacote == 1" *ngFor="let item of listaResultado">
+          <div class="itemPais" style="padding-top: 10px;padding-bottom: 10px;">{{item.pais}}</div>
+          <div fxLayout="column" style="border-radius: 5px;overflow: hidden;">
+            <button *ngFor="let cidade of item.cidades" class="caixaHistorico" (click)="historicoSelecionado(item)">
+              <div fxLayout="row" style="background-color: #ffffff0f;">
+                <div fxLayout="row" style="justify-content: center;">
+                  <div class="textoHistorico" style="padding-top: 5px;">{{cidade.pais}}</div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="column">
+        <button [hidden]="tipoPacote==2" *ngFor="let item of listaResultado" class="caixaHistorico" (click)="historicoSelecionado(item)">
           <div fxLayout="row" style="background-color: #ffffff0f;">
-            <div>
-              <i class="fa fa-map-marker iconePlot" aria-hidden="true"></i>
-            </div>
             <div fxLayout="row" style="justify-content: center;">
-              <div class="textoHistorico">{{cidade.pais}}</div>
+              <div class="textoHistorico" style="padding-top: 5px;">{{item.pais}}</div>
             </div>
           </div>
         </button>
       </div>
-      <button [hidden]="tipoPacote==2" *ngFor="let item of listaResultado" class="caixaHistorico" (click)="historicoSelecionado(item)">
-          <div fxLayout="row" style="background-color: #ffffff0f;">
-            <div>
-              <i class="fa fa-map-marker iconePlot" aria-hidden="true"></i>
-            </div>
-            <div fxLayout="row" style="justify-content: center;">
-              <div class="textoHistorico">{{item.pais}}</div>
-            </div>
-          </div>
-        </button>
     </div>
     <div [hidden]="idCidade" style="border-radius: 5px;overflow: hidden;">
-        <button *ngFor="let item of listaResultado" class="caixaHistorico" fxLayout="column" (click)="historicoSelecionado(item)">
-            <div fxLayout="row" style="background-color: #ffffff0f;">
-              <div>
-                <i class="fa fa-map-marker iconePlot" aria-hidden="true"></i>
-              </div>
-              <div fxLayout="row" style="justify-content: center;">
-                <div class="textoHistorico">{{item.pais}}</div>
-              </div>
-            </div>
-          </button>
+      <button *ngFor="let item of listaResultado" class="caixaHistorico" fxLayout="column" (click)="historicoSelecionado(item)">
+        <div fxLayout="row" style="background-color: #ffffff0f;">
+          <div fxLayout="row" style="justify-content: center;">
+            <div class="textoHistorico">{{item.pais}}</div>
+          </div>
+        </div>
+      </button>
     </div>
 
   </div>

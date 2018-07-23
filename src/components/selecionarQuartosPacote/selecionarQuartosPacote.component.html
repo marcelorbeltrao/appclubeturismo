@@ -1,0 +1,57 @@
+<div [hidden]="!mostraCarregando" class="telaCarregando">
+  <div class="icoCarregando">
+    <i class="fa fa-spin fa-spinner" aria-hidden="true"></i>
+  </div>
+</div>
+
+<div flex fxLayout="column" class="caixaTela">
+  <button (click)="voltarTela()" class="botaoVoltar">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+  </button>
+  <div class="labelHeader" style="margin-left: 11px;">Selecione um quarto</div>
+  <div style="margin-left: 10px;margin-right: 10px;"> 
+    <label class="qtdQuartos">
+      Temos
+      <tbody>
+        <tr fxLayout="row">
+          <th class="qtd">{{quartos.length}}</th>
+        </tr>
+      </tbody>
+      opções de quartos para você
+    </label>
+  </div>
+  <div fxLayout="column" style="padding: 10px;">
+    <div fxLayout="column" class="itemQuarto" *ngFor="let item of quartos; let i = index">
+      <div fxLayout="column">
+        <div fxLayout="row">
+          <div style="width: 40px;">
+            <i class="fa fa-bed icoSearch " aria-hidden="true"></i>
+            <div class="indiceQto">{{i + 1}}</div>
+          </div>
+
+          <div class="labelQuarto" style="flex:1">
+            <div class="labelNomeQuarto">{{item.nomeQuarto}}</div>
+            <div style="font-size: small;margin-bottom: 8px;">{{item.mealPlan}}</div>
+          </div>
+          <div>
+              <div class="caixaDisponivel">Quartos disponíveis {{item.availableRooms}}</div>
+          </div>
+        </div>
+        <div fxLayout="row" class="localValores">
+            <div class="camposValor ">
+              <div class="labelTituloValor">Valor por pessoa</div>
+              <div fxLayout="row" class="labelValor"><div class="labelReal">R$</div>{{item.valor / item.qtdPessoas | number:'.2-2'}}</div>
+            </div>
+            <div class="camposValor " style="text-align: right;">
+              <div class="labelTituloValor">Valor total x {{item.qtdPessoas}}</div>
+              <div fxLayout="row" class="labelValor" style="justify-content: flex-end;"><div class="labelReal">R$</div>{{item.valor  | number:'.2-2'}}</div>
+            </div>
+          </div>
+      </div>
+      <div style="text-align: center;">
+        <button class="botaoPesquisar" (click)="itemSelecionado(item)">Escolher quarto</button>
+      </div>
+    </div>
+  </div>
+
+</div>

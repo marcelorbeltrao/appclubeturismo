@@ -51,7 +51,8 @@ export class FiltroPacoteComponent implements OnInit {
   valPeriodoSelecionado = 'Selecione um período';
   valTipoProdutoSelecionado = 'Selecione um tipo de produto';
   pontoLocalSelecionado = null;
-
+  listaPeriodo = []
+  
   ngOnInit() {
   }
 
@@ -194,8 +195,10 @@ export class FiltroPacoteComponent implements OnInit {
   }
 
   public periodoSelecionado(evt){
-      this.mesSelecionado = evt.dados.month;
-      this.anoSelecionado = evt.dados.year;
+      this.listaPeriodo = evt.dados.listaResultado;
+
+      this.mesSelecionado = evt.dados.item.month;
+      this.anoSelecionado = evt.dados.item.year;
       this.valTipoProdutoSelecionado = 'Selecione um tipo de produto';
       this.valPeriodoSelecionado = this.mesSelecionado + ' de ' + this.anoSelecionado;
       this.bloqueiaTipoProduto = false;
@@ -255,7 +258,7 @@ export class FiltroPacoteComponent implements OnInit {
   }  
 
   public onFiltroClick(){
-    var obj = {localOrigem:this.idLocalOrigemSelecionado, localDestino:this.idLocalDestinoSelecionado, qtdQuartos:this.qtdQuartos, qtdAdultos:this.qtdAdultos, qtdCriancas:this.qtdCriancas, listaCriancas:this.listaCriancas, mes:this.mesSelecionado, ano:this.anoSelecionado};
+    var obj = {localOrigem:this.idLocalOrigemSelecionado, localDestino:this.idLocalDestinoSelecionado, textoLocalDestino:this.textoLocalDestinoSelecionado, qtdQuartos:this.qtdQuartos, qtdAdultos:this.qtdAdultos, qtdCriancas:this.qtdCriancas, listaCriancas:this.listaCriancas, mes:this.mesSelecionado, ano:this.anoSelecionado};
 
     this.onFiltro.emit({event:null, dados: obj});
   }

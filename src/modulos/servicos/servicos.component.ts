@@ -1,34 +1,33 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DetalhesPacoteComponent } from '../../components/detalhesPacote/detalhesPacote.component';
+import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { DetalhesHotelComponent } from '../../components/detalhesHotel/detalhesHotel.component';
+import { ProcuraLocalComponent } from '../../components/procuraLocal/procuraLocal.component';
+import { FiltroHotelComponent } from '../../components/filtroHotel/filtroHotel.component';
 import { TelaFiltrosComponent } from '../../components/telaFiltros/telaFiltros.component';
 import { TelaMapaComponent } from '../../components/telaMapa/telaMapa.component';
 import { SelecionaDataComponent } from '../../components/selecionaData/selecionaData.component';
 import { SelecionaPessoasComponent } from '../../components/selecionaPessoas/selecionaPessoas.component';
-import { SelecionePeriodoComponent } from '../../components/selecionePeriodo/selecionePeriodo.component';
 
 import * as $ from "jquery";
-import * as moment from 'moment';
-
-import { PacotesModel } from './pacotes.model';
+import { ServicosModel } from './servicos.model';
 
 @Component({
   providers: [SelecionaDataComponent],
-  selector: 'pacotes',
-  templateUrl: './pacotes.component.html',
-  styleUrls: ['./pacotes.component.css']
+  selector: 'servicos',
+  templateUrl: './servicos.component.html',
+  styleUrls: ['./servicos.component.css']
 })
 
-export class PacotesComponent implements OnInit {
-  @ViewChild("selecionePeriodo") selecionePeriodo: SelecionePeriodoComponent;
-
+export class ServicosComponent implements OnInit {
   @ViewChild("selecionaDataHotel")
   private compData: SelecionaDataComponent
 
   @ViewChild("selecionaPessoasHotel")
   private compPessoa: SelecionaPessoasComponent
 
-  @ViewChild("detalhesPacote")
-  private detalhesPacote: DetalhesPacoteComponent;
+  @ViewChild("detalhesHotel")
+  private detalhesHotel: DetalhesHotelComponent;
 
   @ViewChild("telaMapaHotel")
   private telaMapaHotel: TelaMapaComponent
@@ -36,7 +35,7 @@ export class PacotesComponent implements OnInit {
   @ViewChild("telaFiltroComp")
   private telaFiltroComp: TelaFiltrosComponent;
 
-  constructor(public pacotesModel: PacotesModel) { };
+  constructor(public servicosModel: ServicosModel) { };
 
   textoPesquisa = 'Pesquise um destino ou pacote';
   items: any = [];
@@ -44,13 +43,13 @@ export class PacotesComponent implements OnInit {
 
   objFiltro: any = {};
 
-  mostraDetalhesPacote = false;
+  mostraDetalhesHotel = false;
   mostraProcuraLocal = false;
   mostraTelaFiltro = false;
   mostraTelaMapa = false;
   mostraSelecionaData = false;
   mostraFiltro = false;
-  mostraPesquisarPacote = true;
+  mostraPesquiarHotel = true;
   mostraSelecionaPessoas = false;
   hotelSelecionado = {};
   scrollAnt = 0;
@@ -59,11 +58,6 @@ export class PacotesComponent implements OnInit {
   qtdQuartosPesquisa = 1;
   textoLocalSelecionado = '';
   idLocalSelecionado = null;
-  mostraSelecionePeriodo = false;
-
-  mesSelecionado = 0;
-  anoSelecionado = 0;
-  diaSelecionado = new Date();
 
   qtdQuartos = 0;
 
@@ -130,13 +124,15 @@ export class PacotesComponent implements OnInit {
   }
 
   public periodoSelecionado(evt) {
-    this.mesSelecionado = evt.dados.item.month;
-    this.anoSelecionado = evt.dados.item.year;
+    this.dataInicio = evt.dados.dataInicio;
+    var dt1 = evt.dados.dataInicio;
+    var dtInicio = this.adicionaZero(dt1.getDate()) + '/' + this.adicionaZero((dt1.getMonth() + 1)) + '/' + dt1.getFullYear();
 
-    this.objFiltro.mes = this.mesSelecionado;
-    this.objFiltro.ano = this.anoSelecionado;
-    
-    this.valPeriodoSelecionado = this.mesSelecionado + ' de ' + this.anoSelecionado;
+    this.dataFim = evt.dados.dataFim;
+    var dt2 = evt.dados.dataFim;
+    var dtFim = this.adicionaZero(dt2.getDate()) + '/' + this.adicionaZero((dt2.getMonth() + 1)) + '/' + dt2.getFullYear();
+
+    this.valPeriodoSelecionado = dtInicio + ' - ' + dtFim;
 
     this.carregarRegistros();
   }
@@ -147,40 +143,54 @@ export class PacotesComponent implements OnInit {
 
     var me = this;
     me.mostrarCarregando();
+    me.qtdQuartos = 0;
 
-    me.objFiltro = this.objFiltro;
-
-    this.pacotesModel.pesquisaPacotes(me.objFiltro).then(function (result: any) {
+    this.servicosModel.buscaTraslados(this.objFiltro).then(function (result: any) {
 
       for (var t = 0; t < result.length; t++) {
-
         var item = result[t];
         item.foto = item.images.items[0].link;
 
         item.qtdPessoas = me.objFiltro.qtdAdultos + me.objFiltro.qtdCriancas;
-        item.qtdAdultos = me.objFiltro.qtdAdultos;
-        item.qtdCriancas = me.objFiltro.qtdCriancas;
-        item.listaCriancas = me.objFiltro.listaCriancas;
+        item.qtdDiarias = (me.objFiltro.dataFim - me.objFiltro.dataInicio) / 86400000;
 
-        let data = new Date(me.anoSelecionado, me.mesSelecionado - 1, 1);
+        var menorPreco = 0;
+        var maiorPreco = 0;
+        
+        for (var k = 0; k < item.accommodations.items.length; k++) {
+          me.qtdQuartos++;
 
-        var primeiroDia = new Date(data.getFullYear(), data.getMonth(), 1);
-        var ultimaDia = new Date(data.getFullYear(), data.getMonth() + 1, 0);
+          var quarto = item.accommodations.items[k];
+          var preco = quarto.fares.items[0].averageDaily.base.amount;
 
-        item.diasDisponiveis = [];
+          if (menorPreco == 0){
+            menorPreco = preco;
+            item.quarto = quarto;
+          }
+          else if (preco < menorPreco){
+            menorPreco = preco;
+            item.quarto = quarto;
+          }
 
-        for(var k = 0 ; k < item.departure.dates.items.length ; k ++){
-          var dia = new Date(item.departure.dates.items[k]);
-          if(dia >= primeiroDia && dia <= ultimaDia)
-            item.diasDisponiveis.push(dia);
+          if (maiorPreco == 0)
+            maiorPreco = preco;
+          else if (preco > maiorPreco)
+            maiorPreco = preco;
         }
 
-        item.valor = item.fares.items[0].total.base.amount;
+        item.lat = item.address.latitude;
+        item.lng = item.address.longitude;
+        item.valor = menorPreco;
+        item.menorPreco = menorPreco;
+        item.maiorPreco = maiorPreco;
+
+        if (t == 0)
+          me.pontoLocalSelecionado = { lat: item.lat, lng: item.lng };
       }
 
       me.itemsOriginal = result;
 
-      //localStorage.setItem('listaPacotes', JSON.stringify(me.itemsOriginal));
+      localStorage.setItem('listaHoteis', JSON.stringify(me.itemsOriginal));
 
       me.items = result;
       me.filtroFiltroAplicado = false;
@@ -209,25 +219,6 @@ export class PacotesComponent implements OnInit {
     });
   }
 
-  public selecionarPeriodo(){
-    this.mostraSelecionePeriodo = true;
-
-    this.selecionePeriodo.inicializa(this.objFiltro);
-
-    $('.selecionePeriodo').css({'margin-left':'100vw'});
-    $('.selecionePeriodo').animate({'margin-left':'0'},200, function(){
-        $('.selecionePeriodo .botaoVoltar').animate({ 'opacity': 1, 'margin-left': 0 });
-    });    
-  }  
-
-  public onFecharSelecionePeriodo(){
-    var me = this;
-    $('.selecionePeriodo .botaoVoltar').css({ 'opacity': 0, 'margin-left': 10 });
-    $('.selecionePeriodo').animate({'margin-left':'100vw'}, 200 , function (){
-      me.mostraSelecionePeriodo = false;
-    });    
-  }
-  
   public onFecharMapa() {
     var me = this;
     $('.botaoVoltarTela').css({ 'opacity': 0, 'margin-left': 10 });
@@ -254,26 +245,14 @@ export class PacotesComponent implements OnInit {
     });
   }
 
-  public onFiltroPacote(evt) {
+  public onFiltroServico(evt) {
     this.objFiltro = evt.dados;
 
-    this.mesSelecionado = this.objFiltro.mes;
-    this.anoSelecionado = this.objFiltro.ano;
-
-    this.valPeriodoSelecionado = this.mesSelecionado + ' de ' + this.anoSelecionado;
-    this.textoLocalSelecionado = this.objFiltro.textoLocalDestino;
-
-    this.qtdHospedesPesquisa = evt.dados.qtdAdultos + evt.dados.qtdCriancas;
     this.qtdAdultosPesquisa = evt.dados.qtdAdultos;
     this.qtdCriancasPesquisa = evt.dados.qtdCriancas;
-    this.qtdQuartosPesquisa = evt.dados.qtdQuartos;
+
     this.listaCriancasPesquisa = evt.dados.listaCriancas;
-
-/*
-
     this.textoLocalSelecionado = evt.dados.textoPesquisa;
-
-    this.pontoLocalSelecionado = evt.dados.pontoLocalSelecionado;
 
     this.dataInicio = evt.dados.dataInicio;
     var dt1 = evt.dados.dataInicio;
@@ -284,15 +263,16 @@ export class PacotesComponent implements OnInit {
     var dtFim = this.adicionaZero(dt2.getDate()) + '/' + this.adicionaZero((dt2.getMonth() + 1)) + '/' + dt2.getFullYear();
 
     this.valPeriodoSelecionado = dtInicio + ' - ' + dtFim;
-    */
+
     this.mostrarCarregando();
+    
     this.carregouFiltro = true;
 
     var me = this;
 
-    $('.filtroPacote').animate({ 'top': '100vh' }, 300, function () {
+    $('.filtroHotel').animate({ 'top': '100vh' }, 300, function () {
       $('.botaoVoltarHotel').css({ 'opacity': 1, 'margin-left': 0 });
-      me.mostraPesquisarPacote = false;
+      me.mostraPesquiarHotel = false;
       me.carregarRegistros();
     });
   }
@@ -321,8 +301,8 @@ export class PacotesComponent implements OnInit {
   public voltarFiltro() {
     var me = this;
     $('.botaoVoltarHotel').animate({ 'opacity': 0 }, function () {
-      me.mostraPesquisarPacote = true;
-      $('.filtroPacote').animate({ 'top': '0' }, 200);
+      me.mostraPesquiarHotel = true;
+      $('.filtroHotel').animate({ 'top': '0' }, 200);
     });
   }
 
@@ -368,7 +348,7 @@ export class PacotesComponent implements OnInit {
   }
 
   public itemSelecionado(item) {
-    this.mostraDetalhesPacote = true;
+    this.mostraDetalhesHotel = true;
 
     this.hotelSelecionado = item;
 
@@ -379,8 +359,7 @@ export class PacotesComponent implements OnInit {
 
     item.dataInicio = this.dataInicio;
     item.dataFim = this.dataFim;
-    
-    this.detalhesPacote.inicializaPacote(item, null);
+    this.detalhesHotel.inicializaHotel(item);
   }
 
   public onFecharDetalhes() {
@@ -396,7 +375,7 @@ export class PacotesComponent implements OnInit {
     $('.botaoVoltarHotel').animate({ 'opacity': 1 });
     $('.botaoVoltar').css({ 'opacity': 0, 'margin-left': 10 });
     $('.procuraLocal').animate({ 'margin-left': '100vw' }, 200, function () {
-      me.mostraDetalhesPacote = false;
+      me.mostraDetalhesHotel = false;
     });
   }
 }

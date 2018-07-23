@@ -5,7 +5,7 @@
 }
 
 .telaDetalhes{
-    min-height: calc(100vh - 52px);
+    max-height: calc(100vh - 70px);
     background-color: #FFFFFF;
 }
 
@@ -20,7 +20,27 @@
 }
 
 
+.separador{
+    background-color: #b5b2b2;
+    width: 1px;
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
 
+.caixaRes{
+    justify-content: center;
+    flex: 1 1 0%;
+    text-align: right;
+    padding-top: 5px;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    border: 1px solid #dfdfdf;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    margin-top: 24px;
+}
 
 .localBotaoAplicar{
     position: absolute;
@@ -30,6 +50,11 @@
     padding: 0;
 }
 
+.telaCarregando{
+    background-color: var(--main-color);
+    height: 100vh;
+    z-index: 999999;
+}
 
 
 .botaoPesquisar{
@@ -41,6 +66,7 @@
     margin-top: 5px;
     border-radius: 0;
 }
+
 resumo-selecao{
     position: absolute;
     top: 42px;
@@ -48,6 +74,34 @@ resumo-selecao{
     background-color: var(--main-color);
     height: calc(100vh - 112px);
     z-index: 99999;
+}
+
+.caixaDisponivel{
+    background-color: #e23a3a94;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-size: x-small;
+    margin-top: 9px;
+    margin-right: 7px;
+    padding-bottom: 5px;
+}
+
+selecione-dia, lista-hoteis-pacotes, selecionar-quartos-pacote{
+    position: absolute;
+    top: 42px;
+    width: 100vw;
+    background-color: var(--main-color);
+    height: calc(100vh - 112px);
+    z-index: 99999;
+}
+
+selecione-dia, lista-hoteis-pacotes, selecionar-quartos-pacote{
+    height: 100vh;
+    top:0px;
+    z-index: 9999999;
 }
 
 .resumoSelecao{
@@ -65,6 +119,11 @@ resumo-selecao{
     margin-top: -22px;
 }
 
+.labelPossui{
+    flex: 1;
+    text-align: center;
+}
+
 agm-map{
     height: 200px;
     margin-top: 6px;
@@ -73,9 +132,10 @@ agm-map{
 
 .valorPacote{
     font-weight: 700;
-    font-size: 24px;
+    font-size: 31px;
     justify-content: flex-end;
     margin-top: -4px;
+    color: var(--main-color);
 }
 
 .labelCancelamento{
@@ -124,16 +184,49 @@ agm-map{
     font-weight: 600;
 }
 
+
+.estrela{
+    color: #f8c205eb;
+    padding: 3px;
+    padding-left: 0px;
+    padding-top: 2px;
+    padding-bottom: 5px;
+}
+
+.descricaopacote{
+    height: 66px;
+    overflow: hidden;
+    text-align: justify;
+    margin-top: 9px;
+    margin-bottom: 10px;
+}
+
+.botaoMostrarMais{
+    margin-top: 0px;
+    border: 0px;
+    background-color: var(--main-color) !important;
+    border-radius: 3px;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    box-shadow: 1px 1px 2px 0px #333333a6;
+    color: #FFFFFF;
+}
+
 .lbQtd{
-    font-size: 15px;
+    font-size: 25px;
     font-weight: 600;
     padding-left: 3px;
     padding-right: 3px;
 }
 
 .caixaFiltro{
-    height: 40px;
+    height: 43px;
     border-bottom: 1px solid #f1f1f1;
+    margin-bottom: 10px;
+    background-color: #e8e8e896;
+    padding-left: 10px;
+    border-radius: 3px;
 }
 
 .labelLocal{
@@ -142,23 +235,99 @@ agm-map{
     margin-bottom: 7px;
 }
 
-.icoQtd{
-    padding-top: 2px;
+.botaoOpcao{
+    margin: auto;
+    background-color: var(--second-color);
+    color: #FFFFFF;
+    border: 0px;
+    border-radius: 5px;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    min-width: 210px;
+    box-shadow: 1px 1px 2px 0px #333333a6;
 }
 
-.lbTextoQtd{
-    font-size: 12px;
-    padding-top: 2px;
+.icoQtd{
+    padding-top: 5px;
+    font-size: 23px;
+    padding-left: 10px;
     padding-right: 5px;
+    color: var(--main-color);
+}
+
+.lbTexto{
+    font-size: initial;
+    padding-top: 5px;
+    padding-right: 5px;  
+    text-align: left;
 }
 
 .labelReal{
     font-size: 14px;
-    padding-top: 10px;
-    padding-right: 2px;
+    padding-top: 18px;
+    padding-right: 4px;
+}
+
+.icoBed{
+    font-size: 22px;
+    padding-top: 8px;
+    margin-left: 5px;
+    color: var(--main-color);
+}
+
+.labelDia{
+    margin-top: 10px;
+    margin-bottom: 3px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--main-color);    
+}
+
+.labelServicos{
+    font-size: small;
+    margin-top: 5px;
+    font-weight: 600;
+    color: var(--main-color);    
+}
+
+.labelContent{
+    font-size: small;
+}
+
+.lbTextoQtd{
+    font-size: 18px;
+    padding-top: 7px;
+    padding-right: 5px;
 }
 
 .localFoto{
-    height: 200px;
+    height: auto;
     overflow: hidden;
+    border-radius: 3px;
+}
+
+.icoPossui{
+    font-size: 35px;
+    color: var(--main-color);
+}
+
+.listaServicosIncluidos{
+    overflow: hidden;
+}
+
+.fonteData{
+    color: inherit;
+    font-size: 20px;
+}
+
+.labelMaisOpcoes{
+    background-color: #ffffff00;
+    border: 0px;
+    padding-top: 0px;
+    font-weight: 600;
+    color: var(--main-color);
+    margin-top: -1px;
 }

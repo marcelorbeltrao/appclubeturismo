@@ -65,4 +65,31 @@ export class HoteisModel {
 
         return promise;
     }
+
+    
+    public pesquisaHotel(hotel:any) {
+        let apiToken = this.apiConnect.getToken();
+
+        let promise = new Promise((resolve, reject) => {
+
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            headers.append('Authorization', 'bearer ' + apiToken);
+
+            let apiURL = this.urlApi + '/hotels/' + hotel;
+
+            let options = new RequestOptions({ headers: headers });
+
+            this.http.get(apiURL, options)
+                .toPromise()
+                .then(
+                    res => {
+                        var resp = res.json();
+                        resolve(resp);
+                    }
+                );
+        });
+
+        return promise;
+    }
 }

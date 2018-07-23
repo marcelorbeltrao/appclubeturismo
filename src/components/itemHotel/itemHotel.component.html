@@ -49,10 +49,10 @@
       <div style="flex: 1;text-align: right;padding-top: 3px;" fxLayout="row">
         <i class="fa fa-sun-o icoQtd" aria-hidden="true"></i>
         <div class="lbQtd">{{item.qtdDiarias}}</div>
-        <div class="lbTextoQtd">Diárias</div>
+        <div class="lbTextoQtd">{{(item.qtdDiarias == 1) ?'Diária':'Diárias'}}</div>
         <i class="fa fa-male icoQtd" aria-hidden="true"></i>
         <div class="lbQtd">{{item.qtdPessoas}}</div>
-        <div class="lbTextoQtd">Pessoas</div>
+        <div class="lbTextoQtd">{{(item.qtdPessoas == 1) ? 'Pessoa':'Pessoas'}}</div>
       </div>
     </div>
     <div style="flex: 1;text-align: right;margin-bottom: 13px;">

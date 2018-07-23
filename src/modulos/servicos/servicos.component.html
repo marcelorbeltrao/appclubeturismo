@@ -9,43 +9,43 @@
 </div>
 
 <div [hidden]="!mostraCarregando" class="telaCarregando">
-    <div class="loading loading-block loadingDefault" style="display: block;">
-        <div class="loading-bg">
-        </div>
-        <div class="spinner">
-            <div class="balls">
-                <div class="bounce1"></div>
-                <div class="bounce2"></div>
-                <div class=" bounce3"></div>
+        <div class="loading loading-block loadingDefault" style="display: block;">
+            <div class="loading-bg">
             </div>
-            <div class="airplane">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-                    width="510px" height="510px" viewBox="0 0 510 510" style="enable-background: new 0 0 510 510;" xml:space="preserve">
-                    <g>
-                        <g id="airplanemode-on">
-                            <path d="M497.25,357v-51l-204-127.5V38.25C293.25,17.85,275.4,0,255,0c-20.4,0-38.25,17.85-38.25,38.25V178.5L12.75,306v51    l204-63.75V433.5l-51,38.25V510L255,484.5l89.25,25.5v-38.25l-51-38.25V293.25L497.25,357z"></path>
+            <div class="spinner">
+                <div class="balls">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class=" bounce3"></div>
+                </div>
+                <div class="airplane">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+                        width="510px" height="510px" viewBox="0 0 510 510" style="enable-background: new 0 0 510 510;" xml:space="preserve">
+                        <g>
+                            <g id="airplanemode-on">
+                                <path d="M497.25,357v-51l-204-127.5V38.25C293.25,17.85,275.4,0,255,0c-20.4,0-38.25,17.85-38.25,38.25V178.5L12.75,306v51    l204-63.75V433.5l-51,38.25V510L255,484.5l89.25,25.5v-38.25l-51-38.25V293.25L497.25,357z"></path>
+                            </g>
                         </g>
-                    </g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                </svg>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                    </svg>
+                </div>
             </div>
-        </div>
 
-    </div>
+        </div>
 </div>
 
 <div class="telaPacotes" flex fxLayout="row" (scroll)="onScroll($event)">
@@ -65,20 +65,16 @@
             </div>
         </div>
     </div>
-    <div [hidden]="filtroFiltroAplicado == true" style="padding-left: 10px;padding-top: 5px;">
-        <label class="qtdQuartos">
-            <tbody>
-                <tr fxLayout="row">
-                    <th class="qtd">{{itemsOriginal.length}}</th>
-                    <th>hoteis encontrados, com </th>
-                    <th class="qtd" style="padding-left: 5px;">{{qtdQuartos}}</th>
-                </tr>
-            </tbody>
-            quartos disponíveis.
-        </label>
+    <div  [hidden]="filtroFiltroAplicado == true" style="padding-left: 10px;padding-top: 5px;">
+    <label  class="qtdQuartos" >
+        <tbody>
+        <tr fxLayout="row"><th class="qtd">{{itemsOriginal.length}}</th><th>hoteis encontrados, com </th><th class="qtd" style="padding-left: 5px;">{{qtdQuartos}}</th></tr>
+    </tbody>
+    quartos disponíveis.
+    </label>
     </div>
-
-
+    
+    
     <div fxLayout="column" class="listaSelecao">
         <button fxLayout="column" class="itemSelecao" *ngFor="let item of items" (click)="itemSelecionado(item)">
             <item-hotel fxLayout="row" [dados]="item"></item-hotel>
@@ -96,11 +92,12 @@
         <div style="    font-weight: 600;font-size: 11px;">Filtros</div>
         <div [hidden]="filtroFiltroAplicado != true" class="icoFiltroAplicado"></div>
     </button>
+    
 </div>
 
 <tela-filtros modoHotel="true" #telaFiltroComp class="telaFiltro" (onFiltroAplicado)="onFiltroFiltroAplicado($event)" [hidden]="!mostraTelaFiltro"
     (onFechar)="onFecharFiltro()"></tela-filtros>
-<filtro-hotel (onFiltro)="onFiltroHotel($event)" [hidden]="!mostraPesquiarHotel" class="filtroHotel"></filtro-hotel>
+<filtro-servicos (onFiltro)="onFiltroServico($event)" [hidden]="!mostraPesquiarHotel" class="filtroHotel"></filtro-servicos>
 <seleciona-data (periodoSelecionado)="periodoSelecionado($event)" #selecionaDataHotel class="selecionaData" [hidden]="!mostraSelecionaData"
     (onFechar)="onFecharSelecionaData()"></seleciona-data>
 <detalhes-hotel #detalhesHotel class="detalhes" [hidden]="!mostraDetalhesHotel" (onFechar)="onFecharDetalhes()"></detalhes-hotel>

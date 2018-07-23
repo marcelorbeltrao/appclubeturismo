@@ -1,6 +1,7 @@
 .headerSeleciona{
     padding: 15px;
     display: block !important;
+    padding-bottom: 0px;
 }
 
 .labelHeader{

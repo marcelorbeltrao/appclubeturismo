@@ -68,7 +68,7 @@ export class SelecionePeriodoComponent implements OnInit {
   }
   
   public periodoSelecionadoClick(item){
-    this.periodoSelecionado.emit({event:null, dados: item});
+    this.periodoSelecionado.emit({event:null, dados: {item:item, listaResultado:this.listaResultado});
     this.fechaTela();
   }
 

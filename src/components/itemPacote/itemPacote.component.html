@@ -9,30 +9,31 @@
     <div style="flex: 1;">
       <div class="labelLocal">{{item.title}}</div>
       <div fxLayout="row" class="localPossui">
+        <div class="labelPossui" [hidden]="!item.possuiAviao">
+          <i class="fa fa-plane icoPossui" aria-hidden="true"></i>Aéreo</div>
         <div class="labelPossui" [hidden]="!item.possuiHotel">
           <i class="fa fa-bed icoPossui" aria-hidden="true"></i>Hotel</div>
         <div class="labelPossui" [hidden]="!item.possuiTraslado">
           <i class="fa fa-bus icoPossui" aria-hidden="true"></i>Traslado</div>
         <div class="labelPossui" [hidden]="!item.possuiPasseio">
-          <i class="fa fa-bus icoPossui" aria-hidden="true"></i>
-          Passeio
-        </div>
+          <i class="fa fa-bus icoPossui" aria-hidden="true"></i>Passeio</div>
       </div>
       <div style="flex: 1;text-align: right;padding-top: 3px;" fxLayout="row">
-        <i class="fa fa-sun-o icoQtd" aria-hidden="true"></i>
+        <i class="fa fa-moon-o icoQtd" aria-hidden="true"></i>
         <div class="lbQtd">{{item.qtdDiarias}}</div>
-        <div class="lbTextoQtd">Diárias</div>
+        <div class="lbTextoQtd">{{(item.qtdDiarias == 1) ? 'Noite':'Noites'}}</div>
         <i class="fa fa-male icoQtd" aria-hidden="true"></i>
         <div class="lbQtd">{{item.qtdPessoas}}</div>
-        <div class="lbTextoQtd">Pessoas</div>
+        <div class="lbTextoQtd">{{(item.qtdPessoas == 1) ? 'Pessoa':'Pessoas'}}</div>
       </div>
     </div>
     <div style="flex: 1;text-align: right;margin-bottom: 13px;">
-      <div class="aPartir">Diárias a partir de</div>
+      <div class="aPartir">a partir de</div>
       <div class="valorPacote" fxLayout="row" [ngClass]="(item.desconto > 0)?'corVerm':'corNorm'">
         <div class="labelReal">R$</div>
         {{item.valor | number:'.2-2'}}
       </div>
+      <div class="aPartir" style="padding-top: 0px;">Preço por pessoa (apto. duplo)</div>
     </div>
   </div>
 </div>

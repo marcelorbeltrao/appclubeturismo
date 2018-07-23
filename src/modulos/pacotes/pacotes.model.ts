@@ -13,9 +13,7 @@ export class PacotesModel {
 
         urlApi = 'https://package-stg.travelhubapi.com.br/v1';
 
-    /**
-     * connectAPI
-     */
+
     public pesquisaPacotes(obj) {
         let apiToken = this.apiConnect.getToken();
     
@@ -25,7 +23,7 @@ export class PacotesModel {
           headers.append('Content-Type', 'application/x-www-form-urlencoded');
           headers.append('Authorization', 'Bearer ' + apiToken);
     
-          let apiURL = this.urlApi + '/Availabilities';
+          let apiURL = this.urlApi + '/availabilities';
     
           let options = new RequestOptions({ headers: headers });
           
@@ -63,4 +61,49 @@ export class PacotesModel {
     
         return promise;
       }
+
+
+      public pesquisarPacote(obj) {
+        let apiToken = this.apiConnect.getToken();
+    
+        let promise = new Promise((resolve, reject) => {
+          
+          let headers = new Headers();
+          headers.append('Content-Type', 'application/x-www-form-urlencoded');
+          headers.append('Authorization', 'Bearer ' + apiToken);
+    
+          let apiURL = this.urlApi + '/Availabilities';
+    
+          let options = new RequestOptions({ headers: headers });
+          
+          let data = {
+            "track": obj.localOrigem,
+            "departureDate": obj.localDestino,
+            "rooms": [
+              {
+                "adt": obj.qtdAdultos,
+                "chd": obj.qtdCriancas,
+                "inf": 0,
+                "chdAges": [
+                  0
+                ],
+                "infAges": [
+                  0
+                ]
+              }
+            ]
+          }
+    
+          this.http.post(apiURL, jQuery.param(data), options)
+            .toPromise()
+            .then(
+              res => {
+                var resp = res.json();
+                resolve(resp.items[0].packages.items);
+              }
+            );
+        });
+    
+        return promise;
+      }      
 }

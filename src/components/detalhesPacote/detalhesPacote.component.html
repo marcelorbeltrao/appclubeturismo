@@ -1,161 +1,366 @@
-<div flex fxLayout="column" class="telaDetalhes">
+<div class="telaCarregando" [hidden]="!mostraCarregando">
+  <div class="loading loading-block loadingDefault" style="display: block;">
+    <div class="loading-bg">
+    </div>
+    <div class="spinner">
+      <div class="balls">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class=" bounce3"></div>
+      </div>
+      <div class="airplane">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+          width="510px" height="510px" viewBox="0 0 510 510" style="enable-background: new 0 0 510 510;" xml:space="preserve">
+          <g>
+            <g id="airplanemode-on">
+              <path d="M497.25,357v-51l-204-127.5V38.25C293.25,17.85,275.4,0,255,0c-20.4,0-38.25,17.85-38.25,38.25V178.5L12.75,306v51    l204-63.75V433.5l-51,38.25V510L255,484.5l89.25,25.5v-38.25l-51-38.25V293.25L497.25,357z"></path>
+            </g>
+          </g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <div class="headerDetalhes" fxLayout="column">
-      <button (click)="voltarTela()" class="botaoVoltar" style="padding-top: 10px;">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-      </button>
-      <div class="labelHeader labelPacote">Detalhes do pacote</div>
+<div flex fxLayout="column" class="telaDetalhes" [hidden]="mostraCarregando">
+  <div class="headerDetalhes" fxLayout="column">
+    <button (click)="voltarTela()" class="botaoVoltar" style="padding-top: 10px;">
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <div class="labelHeader labelPacote">Detalhes do pacote</div>
+  </div>
+  <div class="camposDetalhes">
+
+    <div class="localFoto" [hidden]="!mostraFotos" style="height: 200px;overflow: hidden;">
+      <swiper #swiper2 (click)="abrirFullScreen()" height="100%" [images]="imagens"></swiper>
     </div>
-    <div class="camposDetalhes">
-      <div class="localFoto">
-          <swiper #swiper (click)="abrirFullScreen()" height="100%" [images]="imagens"></swiper> 
+
+    <div style="padding: 10px;padding-left: 15px;padding-right: 15px;">
+      <div class="labelLocal">{{pacote.title}}</div>
+      <div [hidden]="!mostraDescricao">
+        <div class="descricaopacote">{{pacote.description}}</div>
+        <div style="    text-align: left;margin-bottom: 10px;margin-top: 4px;">
+          <button class="botaoMostrarMais" (click)="mostrarMaisClick()">{{textBotao}}</button>
+        </div>
+
       </div>
-  
-      <div style="padding: 10px;padding-left: 15px;padding-right: 15px;">
-        <div class="labelLocal">{{pacote.name}}</div>
+
+
+      <div class="caixaRes" fxLayout="row">
+        <i class="fa fa-moon-o icoQtd" aria-hidden="true"></i>
+        <div class="lbQtd">{{pacote.qtdDiarias}}</div>
+        <div class="lbTextoQtd">Noites</div>
+        <div class="separador"></div>
+        <i class="fa fa-male icoQtd" aria-hidden="true"></i>
+        <div class="lbQtd">{{pacote.qtdPessoas}}</div>
+        <div class="lbTextoQtd">Pessoas</div>
+      </div>
+      <div fxLayout="row" style="justify-content: center;margin-top: 15px;    margin-bottom: 10px; font-size: 12px;    padding-left: 5px;">
+        <div style="text-align:center;">
+          <div class="lbTexto" style="text-align: center;">Válido para o período de</div>
+          <div fxLayout="row" style="margin-top: -8px;">
+            <div class="lbTexto fonteData" style="font-weight: 700;margin-top: 5px;margin-bottom: 5px;">{{hotelSelecionado.checkin | date:'dd-MM-yyyy'}}</div>
+            <div style="padding: 9px;padding-top: 13px;padding-left: 6px;font-size: initial;">a</div>
+            <div class="lbTexto fonteData" style="font-weight: 700;margin-top: 5px;margin-bottom: 5px;">{{hotelSelecionado.checkout | date:'dd-MM-yyyy'}}</div>
+          </div>
+          <button class="botaoOpcao" (click)="abrirListaDia()">Selecionar outra data ({{diasDisponiveis.length}})</button>
+        </div>
+      </div>
+      <div fxLayout="row" style="padding-left: 10px;padding-right: 10px;">
+        <div style="margin-top: 5px;flex: 1;text-align: right;">
+          <div class="aPartir" style="text-align: left;">Valor por pessoa</div>
+          <div class="valorPacote" fxLayout="row" style="justify-content: left;">
+            <div class="labelReal">R$</div>
+            {{pacote.valor / pacote.qtdPessoas | number:'.2-2'}}
+          </div>
+        </div>
+        <div style="margin-top: 5px;flex: 1;text-align: right;">
+          <div class="aPartir">Valor total x {{pacote.qtdPessoas}}</div>
+          <div class="valorPacote" fxLayout="row">
+            <div class="labelReal">R$</div>
+            {{pacote.valor | number:'.2-2'}}
+          </div>
+        </div>
+      </div>
+
+      <div [hidden]="!pacote.mostraHotel" style="border-top: 1px solid #33333340;padding-top: 10px;margin-top: 10px;">
+        <div fxLayout="column" style="margin-bottom: 15px;">
+          <div class="labelLocal" style="flex:1;margin-bottom: 15px;">O que está incluso</div>
+
+          <div fxLayout="row" class="localPossui">
+            <div class="labelPossui" [hidden]="!possuiAviao">
+              <i class="fa fa-plane icoPossui" aria-hidden="true"></i>
+              <div style="font-size: 12px;">Aéreo</div>
+            </div>
+            <div class="labelPossui" [hidden]="!possuiHotel">
+              <i class="fa fa-bed icoPossui" aria-hidden="true"></i>
+              <div style="font-size: 12px;">Hotel</div>
+            </div>
+            <div class="labelPossui" [hidden]="!possuiTraslado">
+              <i class="fa fa-bus icoPossui" aria-hidden="true"></i>
+              <div style="font-size: 12px;">Traslado</div>
+            </div>
+            <div class="labelPossui" [hidden]="!possuiPasseio">
+              <i class="fa fa-bus icoPossui" aria-hidden="true"></i>
+              <div style="font-size: 12px;">Passeio</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div [hidden]="!pacote.mostraHotel" style="border-top: 1px solid #33333340;padding-top: 10px;margin-top: 10px;">
         <div fxLayout="row">
-          <div [hidden]="!pacote.mostraEstrela1">
-            <i class="fa fa-star estrela" aria-hidden="true"></i>
-          </div>
-  
-          <div [hidden]="!pacote.mostraEstrela15">
-            <i class="fa fa-star-half estrela" aria-hidden="true"></i>
-          </div>
-  
-          <div [hidden]="!pacote.mostraEstrela2">
-            <i class="fa fa-star estrela" aria-hidden="true"></i>
-          </div>
-  
-          <div [hidden]="!pacote.mostraEstrela25">
-            <i class="fa fa-star-half estrela" aria-hidden="true"></i>
-          </div>
-  
-          <div [hidden]="!pacote.mostraEstrela3">
-            <i class="fa fa-star estrela" aria-hidden="true"></i>
-          </div>
-  
-          <div [hidden]="!pacote.mostraEstrela35">
-            <i class="fa fa-star-half estrela" aria-hidden="true"></i>
-          </div>
-  
-          <div [hidden]="!pacote.mostraEstrela4">
-            <i class="fa fa-star estrela" aria-hidden="true"></i>
-          </div>
-  
-          <div [hidden]="!pacote.mostraEstrela45">
-            <i class="fa fa-star-half estrela" aria-hidden="true"></i>
-          </div>
-  
-          <div [hidden]="!pacote.mostraEstrela5">
-            <i class="fa fa-star estrela" aria-hidden="true"></i>
-          </div>
+          <div class="labelLocal" style="flex:1;">Dados do hotel</div>
+
         </div>
-        <div>
-          <div class="descricaopacote">{{pacote.description}}</div>
-          <div style="    text-align: left;margin-bottom: 10px;margin-top: 4px;">
-            <button class="botaoMostrarMais" (click)="mostrarMaisClick()">{{textBotao}}</button>
+
+
+        <div fxLayout="row" style="margin-bottom: 3px;">
+          <div class="localFoto">
+            <img class="fotoHotel" style="height: 60px;" src="{{hotelSelecionado.foto}}">
           </div>
-  
-        </div>
-  
-  
-        <div class="caixaRes" fxLayout="row">
-          <i class="fa fa-sun-o icoQtd" aria-hidden="true"></i>
-          <div class="lbQtd">{{pacote.qtdDiarias}}</div>
-          <div class="lbTextoQtd">Diárias</div>
-          <div class="separador"></div>
-          <i class="fa fa-male icoQtd" aria-hidden="true"></i>
-          <div class="lbQtd">{{pacote.qtdPessoas}}</div>
-          <div class="lbTextoQtd">Pessoas</div>
-        </div>
-        <div fxLayout="row" style="justify-content: center;margin-top: 15px;    margin-bottom: 10px; font-size: 12px;    padding-left: 5px;">
-          <div>
-            <div class="lbTexto" style="text-align: center;">Válido para o período de</div>
-            <div fxLayout="row" style="margin-top: -8px;">
-              <div class="lbTexto fonteData" style="font-weight: 700;margin-top: 5px;margin-bottom: 5px;">{{pacote.dataInicio | date:'dd-MM-yyyy'}}</div>
-              <div style="padding: 9px;padding-top: 13px;padding-left: 6px;font-size: initial;">a</div>
-              <div class="lbTexto fonteData" style="font-weight: 700;margin-top: 5px;margin-bottom: 5px;">{{pacote.dataFim | date:'dd-MM-yyyy'}}</div>
-            </div>
-          </div>
-        </div>
-        <div fxLayout="row" style="padding-left: 10px;padding-right: 10px;">
-          <div style="margin-top: 5px;flex: 1;text-align: right;">
-            <div class="aPartir" style="text-align: left;">Diárias a partir de</div>
-            <div class="valorPacote" fxLayout="row" style="justify-content: left;">
-              <div class="labelReal">R$</div>
-              {{pacote.valor | number:'.2-2'}}
-            </div>
-          </div>
-          <div style="margin-top: 5px;flex: 1;text-align: right;">
-            <div class="aPartir">Valor total</div>
-            <div class="valorPacote" fxLayout="row">
-              <div class="labelReal">R$</div>
-              {{pacote.valor * pacote.qtdDiarias | number:'.2-2'}}
-            </div>
-          </div>
-        </div>
-        <div style="border-top: 1px solid #33333340;padding-top: 10px;margin-top: 10px;">
-          <div class="labelLocal">Endereço do pacote</div>
-          <!--
-          <agm-map #gmapElement [latitude]="pacote.lat" [zoom]='14' [longitude]="pacote.lng">
-            <agm-marker [latitude]="pacote.lat" [longitude]="pacote.lng" [label]="pacote.label">
-            </agm-marker>
-          </agm-map>
-        -->
-          <div class="lbTexto" style="margin-top: 5px;margin-bottom: 5px;    font-size: large;">{{pacote.endereco}}</div>
-          <div class="lbTexto" style="margin-top: 5px;margin-bottom: 5px;    font-size: large;">{{pacote.cidade}}</div>
-          <div class="lbTexto" style="margin-top: 5px;margin-bottom: 5px;    font-size: large;">{{pacote.zipCode}}</div>
-        </div>
-  
-        <div style="border-top: 1px solid #33333340;padding-top: 10px;margin-top: 10px;">
-          <div class="labelLocal">Facilidades</div>
-          <div>
-            <div fxLayout="row" style="padding: 5px;">
-              <div class="bolaItem"></div>
-              <div>TV a cabo</div>
-            </div>
-            <div fxLayout="row" style="padding: 5px;">
-              <div class="bolaItem"></div>
-              <div>Telefone</div>
-            </div>
-            <div fxLayout="row" style="padding: 5px;">
-              <div class="bolaItem"></div>
-              <div>Telefone</div>
-            </div>
-            <div fxLayout="row" style="padding: 5px;">
-              <div class="bolaItem"></div>
-              <div>Piscina</div>
-            </div>
-            <div fxLayout="row" style="padding: 5px;">
-              <div class="bolaItem"></div>
-              <div>Ar condicionado</div>
-            </div>
-            <div fxLayout="row" style="padding: 5px;">
-              <div class="bolaItem"></div>
-              <div>Estacionamento</div>
-            </div>
-            <div fxLayout="row" style="padding: 5px;">
-              <div class="bolaItem"></div>
-              <div>Wi-fi</div>
-            </div>
-            <div fxLayout="row" style="padding: 5px;">
-              <div class="bolaItem"></div>
-              <div>Cofre</div>
-            </div>
-            <div fxLayout="row" style="padding: 5px;">
-              <div class="bolaItem"></div>
-              <div>Acesso para deficientes</div>
+          <div fxLayout="column" style="    margin-left: 7px;margin-top: -2px;">
+            <div class="labelLocal" style="font-size: 15px;margin-bottom: 0px;">{{hotelSelecionado.name}}</div>
+            <div fxLayout="row" style="font-size: 11px;">
+              <div [hidden]="!hotelSelecionado.mostraEstrela1">
+                <i class="fa fa-star estrela" aria-hidden="true"></i>
+              </div>
+
+              <div [hidden]="!hotelSelecionado.mostraEstrela15">
+                <i class="fa fa-star-half estrela" aria-hidden="true"></i>
+              </div>
+
+              <div [hidden]="!hotelSelecionado.mostraEstrela2">
+                <i class="fa fa-star estrela" aria-hidden="true"></i>
+              </div>
+
+              <div [hidden]="!hotelSelecionado.mostraEstrela25">
+                <i class="fa fa-star-half estrela" aria-hidden="true"></i>
+              </div>
+
+              <div [hidden]="!hotelSelecionado.mostraEstrela3">
+                <i class="fa fa-star estrela" aria-hidden="true"></i>
+              </div>
+
+              <div [hidden]="!hotelSelecionado.mostraEstrela35">
+                <i class="fa fa-star-half estrela" aria-hidden="true"></i>
+              </div>
+
+              <div [hidden]="!hotelSelecionado.mostraEstrela4">
+                <i class="fa fa-star estrela" aria-hidden="true"></i>
+              </div>
+
+              <div [hidden]="!hotelSelecionado.mostraEstrela45">
+                <i class="fa fa-star-half estrela" aria-hidden="true"></i>
+              </div>
+
+              <div [hidden]="!hotelSelecionado.mostraEstrela5">
+                <i class="fa fa-star estrela" aria-hidden="true"></i>
+              </div>
             </div>
           </div>
+
+        </div>
+
+        <agm-map #gmapElement [latitude]="hotelSelecionado.lat" [zoom]='14' [longitude]="hotelSelecionado.lng">
+          <agm-marker [latitude]="hotelSelecionado.lat" [longitude]="hotelSelecionado.lng" [label]="hotelSelecionado.label">
+          </agm-marker>
+        </agm-map>
+        <div class="lbTexto">{{hotelSelecionado.endereco}}</div>
+        <div class="lbTexto" style="font-size: small;padding-top: 0px;">{{hotelSelecionado.cidade}}</div>
+        <div class="lbTexto" style="font-size: small;padding-top: 0px;">CEP: {{hotelSelecionado.zipCode}}</div>
+
+        <div [hidden]="hoteis.length == 1"  style="text-align: center;">
+            <button class="botaoOpcao" style="margin-top: 12px;" (click)="abrirListaHoteis()">Mais hoteis ({{listaHoteis.length}})</button>
         </div>
       </div>
-    </div>
+
+      <div [hidden]="!pacote.mostraHotel" style="border-top: 1px solid #33333340;padding-top: 10px;margin-top: 10px;">
+        <div fxLayout="row">
+          <div class="labelLocal" style="flex:1;">Dados do quarto</div>
+
+        </div>
+
+        <div fxLayout="column" style="margin-bottom: 16px;">
+          <div fxLayout="row">
+            <div style="width: 40px;">
+              <i class="fa fa-bed icoBed " aria-hidden="true"></i>
+            </div>
+
+            <div class="labelQuarto" style="flex:1;">
+              <div class="labelNomeQuarto" style="font-size: 12px;font-weight: 600;color: var(--main-color);">{{quartoSelecionado.nomeQuarto}}</div>
+              <div style="font-size: 12px;">{{quartoSelecionado.tipoComida}}</div>
+            </div>
+            <div>
+              <div class="caixaDisponivel">Quartos disponíveis {{quartoSelecionado.availableRooms}}</div>
+            </div>
+          </div>
+          <div [hidden]="quartos.length == 1" style="text-align: center;">
+              <button class="botaoOpcao"  style="margin-top: 26px;" (click)="abrirListaQuartos()">Mais opções de quartos ({{quartos.length}})</button>
+          </div>
+          
+        </div>
+
+        <div [hidden]="!mostraVoo"  style="    border-top: 1px solid #33333340;padding-top: 10px;margin-top: 24px;">
+          <div class="labelLocal" style="flex:1;">Dados das passagens</div>
+        </div>
+
+        <div [hidden]="!mostraVoo"  style="margin-bottom: 16px; font-size: 11px;font-weight: 600;">
+          <div style="    margin-bottom: 5px;font-size: 15px;font-weight: 700;color: var(--main-color);">
+            Ida
+          </div>
+          <div fxLayout="row" style="    margin-bottom: 14px;">
+            <div>
+              <img class="fotoHotel" style="height: 25px;" src="{{aereoSelecionado.logoIda}}">
+            </div>
+            <div></div>
+            <div style="flex:1;text-align:center;max-width: 32px;">{{dadosVooIda.flightNumber}}</div>
+            <div style="flex:1;text-align:center;max-width: 28px;">{{dadosVooIda.departureAirport.prefixCode}}</div>
+            <div style="margin-top: -8px; flex:1">
+              <div style="flex:1;text-align:center;">{{dadosVooIda.departureDateTime | date:'dd-MM-yyyy'}}</div>
+              <div style="flex:1;text-align:center;">{{dadosVooIda.departureDateTime | date:'hh:mm'}}</div>
+            </div>
+            <div style="flex:1;text-align:center;max-width: 28px;">{{dadosVooIda.arrivalAirport.prefixCode}}</div>
+            <div style="margin-top: -8px; flex:1">
+              <div style="flex:1;text-align:center;">{{dadosVooIda.arrivalDateTime | date:'dd-MM-yyyy'}}</div>
+              <div style="flex:1;text-align:center;">{{dadosVooIda.arrivalDateTime | date:'hh:mm'}}</div>
+            </div>
+
+            <div style="flex:1;text-align:center;max-width: 36px;">{{dadosVooIda.flightDuration}}</div>
+
+          </div>
+          <div style="    margin-bottom: 5px;font-size: 15px;font-weight: 700;color: var(--main-color);">
+            Volta
+          </div>
+          <div fxLayout="row">
+              <div>
+                <img class="fotoHotel" style="height: 25px;" src="{{aereoSelecionado.logoVolta}}">
+              </div>
+              <div></div>
+              <div style="flex:1;text-align:center;max-width: 32px;">{{dadosVooVolta.flightNumber}}</div>
+              <div style="flex:1;text-align:center;max-width: 28px;">{{dadosVooVolta.departureAirport.prefixCode}}</div>
+              <div style="margin-top: -8px; flex:1">
+                <div style="flex:1;text-align:center;">{{dadosVooVolta.departureDateTime | date:'dd-MM-yyyy'}}</div>
+                <div style="flex:1;text-align:center;">{{dadosVooVolta.departureDateTime | date:'hh:mm'}}</div>
+              </div>
+              <div style="flex:1;text-align:center;max-width: 28px;">{{dadosVooVolta.arrivalAirport.prefixCode}}</div>
+              <div style="margin-top: -8px; flex:1">
+                <div style="flex:1;text-align:center;">{{dadosVooVolta.arrivalDateTime | date:'dd-MM-yyyy'}}</div>
+                <div style="flex:1;text-align:center;">{{dadosVooVolta.arrivalDateTime | date:'hh:mm'}}</div>
+              </div>
   
-    <selecionar-quartos class="selecionarQuartos" #selecionarQuartos [hidden]="!mostraSelecionarQuartos" (onFechar)="onFecharSelecionarQuartos()"></selecionar-quartos>
-    <resumo-selecao class="resumoSelecao" #resumoSelecao [hidden]="!mostraResumoSelecao" (onFechar)="onFecharResumoSelecao()"></resumo-selecao>
-  
-    <div class="localBotaoAplicar">
-      <button fxFlex="0" class="botaoPesquisar" (click)="onSelecionarQuartos($event)">
-        Escolher quartos
-      </button>
-    </div>
+              <div style="flex:1;text-align:center;max-width: 36px;">{{dadosVooVolta.flightDuration}}</div>
+
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid #33333340;padding-top: 10px;margin-top: 10px;margin-bottom: 30px;">
+          <div class="labelLocal" style="margin-bottom: 13px;">Regulamento</div>
+
+          <div style="    margin-bottom: 10px;overflow: hidden;">
+            <div class="caixaFiltro" fxLayout="row">
+              <div class="labelFiltro" (click)="abrirServicos()">Serviços inclusos</div>
+              <div class="icoSeta">
+                <button class="botaoAbrir" (click)="abrirServicos()">
+                  <i class="fa fa-arrow-down icoSetaOrdenacao icoAbrirServicos" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+            <div style="margin-bottom: 20px;" class="listaServicosIncluidos">
+              <div fxLayout="column" class="itemQuarto" *ngFor="let item of servicosIncluidos; let i = index">
+                <div class="labelServicos">
+                  {{item}}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div [hidden]="!mostraDocumentacao" style="margin-bottom: 10px;overflow: hidden;">
+            <div class="caixaFiltro" fxLayout="row">
+              <div class="labelFiltro" (click)="abrirDocumentacao()">Documentação necessária</div>
+              <div class="icoSeta">
+                <button class="botaoAbrir" (click)="abrirDocumentacao()">
+                  <i class="fa fa-arrow-down icoSetaOrdenacao icoAbrirDocumentacao" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+            <div style="margin-bottom: 20px;" class="listaDocumentacao">
+              <div fxLayout="column" class="itemQuarto" *ngFor="let item of documentacao; let i = index">
+                <div class="labelServicos">
+                  {{item}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div [hidden]="!mostraObservacoes" style="margin-bottom: 10px;overflow: hidden;">
+            <div class="caixaFiltro" fxLayout="row">
+              <div class="labelFiltro" (click)="abrirOrdenacao()">Observações</div>
+              <div class="icoSeta">
+                <button class="botaoAbrir" (click)="abrirObservacoes()">
+                  <i class="fa fa-arrow-down icoSetaOrdenacao icoAbrirObservacoes" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+            <div style="margin-bottom: 20px;" class="listaObservacoes">
+              <div fxLayout="column" class="itemQuarto" *ngFor="let item of observacoes; let i = index">
+                <div class="labelServicos">
+                  {{item}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div [hidden]="!mostraItinerario" style="margin-bottom: 10px;overflow: hidden;">
+            <div class="caixaFiltro" fxLayout="row">
+              <div class="labelFiltro" (click)="abrirRoteiro()">Roteiro dia-a-dia</div>
+              <div class="icoSeta">
+                <button class="botaoAbrir" (click)="abrirRoteiro()">
+                  <i class="fa fa-arrow-down icoSetaOrdenacao icoAbrirRoteiro" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+            <div style="margin-bottom: 20px;" class="listaRoteiro">
+              <div fxLayout="column" class="itemQuarto" *ngFor="let item of itinerario; let i = index">
+                <div class="labelDia">
+                  Dia {{item.day}} - {{item.title}}
+                </div>
+                <div class="labelContent">
+                  {{item.content}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="localBotaoAplicar" [hidden]="mostraCarregando">
+          <button [hidden]="mostraCarregando" fxFlex="0" class="botaoPesquisar" (click)="onSelecionarQuartos($event)">
+            Comprar pacote
+          </button>
+        </div>
+      </div>
+
+      <selecione-dia class="selecioneDia" #selecioneDia [hidden]="!mostraSelecioneDia" (onDiaSelecionado)="onDiaSelecionado($event)"
+      (onFechar)="onFechaListaDia()"></selecione-dia>
+
+      <lista-hoteis-pacotes class="selecionarHoteis" #selecionarHoteis [hidden]="!mostraListaHoteis" (onHotelSelecionado)="onHotelSelecionado($event)"
+        (onFechar)="onFecharSelecionarHoteis()"></lista-hoteis-pacotes>
+
+      <selecionar-quartos-pacote class="selecionarQuartosPacote" #selecionarQuartosPacote [hidden]="!mostraListaQuartos" (onFechar)="onFecharSelecionarQuartos()"
+        (quartoClick)="onQuartoClick($event)"></selecionar-quartos-pacote>
+      <resumo-selecao class="resumoSelecao" #resumoSelecao [hidden]="!mostraResumoSelecao" (onFechar)="onFecharResumoSelecao()"></resumo-selecao>

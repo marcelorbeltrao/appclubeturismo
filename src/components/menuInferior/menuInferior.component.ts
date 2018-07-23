@@ -37,4 +37,8 @@ export class MenuInferiorComponent implements OnInit {
   public abrirPerfil (){
     this.menuSelecionado = "/perfil";
   }   
+
+  public abrirServicos (){
+    this.menuSelecionado = "/servicos";
+  }   
 }

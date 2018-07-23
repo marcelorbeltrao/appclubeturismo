@@ -7,6 +7,7 @@ import { DestaqueComponent } from '../modulos/destaques/destaques.component';
 import { HoteisComponent } from '../modulos/hoteis/hoteis.component';
 import { PacotesComponent } from '../modulos/pacotes/pacotes.component';
 import { PerfilComponent } from '../modulos/perfil/perfil.component';
+import { ServicosComponent } from '../modulos/servicos/servicos.component';
 import { DetalhesPacoteComponent } from '../components/detalhesPacote/detalhesPacote.component';
 import { DetalhesHotelComponent } from '../components/detalhesHotel/detalhesHotel.component';
 import { ProcuraLocalComponent } from '../components/procuraLocal/procuraLocal.component';
@@ -23,8 +24,11 @@ import { CriarUsuarioComponent } from '../components/criarUsuario/criarUsuario.c
 import { ResumoSelecaoComponent } from '../components/resumoSelecao/resumoSelecao.component';
 import { TelaTextoComponent } from '../components/telaTexto/telaTexto.component';
 import { FiltroHotelComponent } from '../components/filtroHotel/filtroHotel.component';
+import { FiltroServicosComponent } from '../components/filtroServicos/filtroServicos.component';
+
 import { ItemPacoteComponent } from '../components/itemPacote/itemPacote.component';
 import { FiltroPacoteComponent } from '../components/filtroPacote/filtroPacote.component';
+import { ItemHotelPacoteComponent } from '../components/itemHotelPacote/itemHotelPacote.component';
 
 import { ItemHotelComponent } from '../components/itemHotel/itemHotel.component';
 import { DadosUsuarioComponent } from '../components/dadosUsuario/dadosUsuario.component';
@@ -32,8 +36,14 @@ import { ProcuraLocalModel } from '../components/procuraLocal/procuraLocal.model
 import { SelecioneCidadeModel } from '../components/selecioneCidade/selecioneCidade.model';
 import { SelecionePeriodoModel } from '../components/selecionePeriodo/selecionePeriodo.model';
 import { SelecionarQuartosComponent } from '../components/selecionarQuartos/selecionarQuartos.component';
+import { ListaHoteisPacotesComponent } from '../components/listaHoteisPacotes/listaHoteisPacotes.component';
+import { SelecionarQuartosPacoteComponent } from '../components/selecionarQuartosPacote/selecionarQuartosPacote.component';
+import { SelecioneDiaComponent } from '../components/selecioneDia/selecioneDia.component';
+
+import { DetalhesPacoteModel } from '../components/detalhesPacote/detalhesPacote.model';
 
 import { HoteisModel } from '../modulos/hoteis/hoteis.model';
+import { ServicosModel } from '../modulos/servicos/servicos.model';
 import { PacotesModel } from '../modulos/pacotes/pacotes.model';
 
 import { IdadeCriancaPipe } from '../pipes/pipe';
@@ -60,11 +70,17 @@ import {SwiperModule} from '../components/swiper/swiper.module'
             SelecionarQuartosComponent,
             ItemHotelComponent,
             PinchZoomComponent,
+            ServicosComponent,
+            FiltroServicosComponent,
+            SelecioneDiaComponent,
             ResumoSelecaoComponent,
             SelecionePeriodoComponent,
             SelecioneTipoProdutoComponent,
+            SelecionarQuartosPacoteComponent,
             DadosUsuarioComponent,
+            ItemHotelPacoteComponent,
             FiltroPacoteComponent,
+            ListaHoteisPacotesComponent,
             DetalhesHotelComponent,
             SelecioneCidadeComponent,
             TelaSaidaComponent, 
@@ -96,7 +112,7 @@ import {SwiperModule} from '../components/swiper/swiper.module'
              FormsModule, 
              MyDateRangePickerModule  
   ],
-  providers: [APIConnect, SelecionePeriodoModel, ProcuraLocalModel, SelecioneCidadeModel, PacotesModel, HoteisModel],
+  providers: [APIConnect, SelecionePeriodoModel, DetalhesPacoteModel,  ProcuraLocalModel, SelecioneCidadeModel, PacotesModel, HoteisModel],
   bootstrap: [AppComponent, MenuInferiorComponent]
 })
 

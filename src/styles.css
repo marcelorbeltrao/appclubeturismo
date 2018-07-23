@@ -1,9 +1,9 @@
 @import "/css/magic-check.min.css";
 
 :root {
-    --main-color:#a56565;
-    --second-color:#d2bd34;
-    --cor-campo:#FFFFFF;
+    --main-color: #555e7d;
+    --second-color: #95b33a;
+    --cor-campo: #ffffff;
 }
 
 .campoPesquisa{

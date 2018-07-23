@@ -49,9 +49,13 @@
         <div class="iconeSearchGD" style="width:0px;z-index: 999;">
             <i class="fa fa-calendar icoSearch" aria-hidden="true"></i>
         </div>
-        <button [disabled]="bloqueiaPeriodo" fxFlex="0" class="campoBotao campoData" style="padding-left: 34px;text-align: left;    padding-left: 37px;
+        <button [hidden]="(anoSelecionado > 0)" [disabled]="bloqueiaPeriodo" fxFlex="0" class="campoBotao campoData" style="padding-left: 34px;text-align: left;    padding-left: 37px;
         padding-right: 37px;"
             (click)="selecionarPeriodo()">{{valPeriodoSelecionado}}</button>
+
+        <button [hidden]="(anoSelecionado == 0)" [disabled]="bloqueiaPeriodo" fxFlex="0" class="campoBotao campoData" style="padding-left: 34px;text-align: left;    padding-left: 37px;
+        padding-right: 37px;"
+            (click)="selecionarPeriodo()">{{mesSelecionado-1 | mesExtensoPipe }} de {{anoSelecionado}}</button>
         <div class="iconeSearchGD" style="width:0px;z-index: 999;">
             <i class="fa fa-chevron-down icoSearch" aria-hidden="true" style="margin-left: -31px;font-size: 17px;padding-top: 4px;"></i>
         </div>
